@@ -12,8 +12,7 @@ import java.util.ArrayList;
 import model.Jugador;
 import model.Partida;
 
-//aoidhbfgvoiwgauebvo8iyuwergbvoyuierwbvierb
-//aksihjfdbvoiaudbvoiyuaeqbwrvoyuiebrgv
+
 public class MainActivity extends AppCompatActivity {
 
     RadioButton rbNaranjaJugador1, rbNaranjaJugador2, rbVerdeJugador1, rbVerdeJugador2,
