@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Tic Tac Toe</string>
+    <string name="btnJugar">Let\'s play!</string>
+    <string name="btnSalir">Exit</string>
+    <string name="btnVolver">Back</string>
+    <string name="rbAzul">Blue</string>
+    <string name="rbNaranja">Orange</string>
+    <string name="rbVerde">Green</string>
+    <string name="toastVictoria">"The winner is "</string>
+    <string name="txtJugador1">Player 1 - Enter your name and choose your color</string>
+    <string name="txtJugador2">Player 2 - Enter your name and choose your color</string>
+    <string name="txtTurno">Turn:</string>
+</resources>

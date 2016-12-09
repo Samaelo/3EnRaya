@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.garcia.mario.tresenraya.MainActivity">
+
+    <TextView
+        android:text="@string/txtJugador1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtJugador1"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/eTxtJugador1"
+        tools:ignore="HardcodedText" />
+
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/eTxtJugador1"
+        android:layout_marginStart="25dp"
+        android:layout_below="@+id/txtJugador1"
+        android:layout_alignParentStart="true"
+        tools:ignore="LabelFor" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/eTxtJugador2"
+        android:layout_below="@+id/txtJugador2"
+        android:layout_alignStart="@+id/txtJugador2"
+        tools:ignore="LabelFor" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rgJugador2"
+        android:layout_below="@+id/eTxtJugador2"
+        android:layout_alignStart="@+id/eTxtJugador2">
+
+        <RadioButton
+            android:text="@string/rbNaranja"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/eTxtJugador2"
+            android:layout_marginTop="24dp"
+            android:id="@+id/rbNaranjaJugador2"
+            tools:ignore="ObsoleteLayoutParam"
+            android:onClick="on_radiobutton_pulsado"/>
+
+        <RadioButton
+            android:text="@string/rbVerde"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rbNaranjaJugador2"
+            android:layout_alignStart="@+id/rbNaranjaJugador2"
+            android:layout_marginTop="14dp"
+            android:id="@+id/rbVerdeJugador2"
+            tools:ignore="ObsoleteLayoutParam"
+            android:onClick="on_radiobutton_pulsado"/>
+
+        <RadioButton
+            android:text="@string/rbAzul"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rbVerdeJugador2"
+            android:layout_alignStart="@+id/rbVerdeJugador2"
+            android:layout_marginTop="11dp"
+            android:id="@+id/rbAzulJugador2"
+            tools:ignore="ObsoleteLayoutParam"
+            android:onClick="on_radiobutton_pulsado"/>
+    </RadioGroup>
+
+    <Button
+        android:text="@string/btnJugar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnJugar"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rgJugador1"
+        android:layout_below="@+id/eTxtJugador1"
+        android:layout_alignStart="@+id/eTxtJugador1">
+
+        <RadioButton
+            android:text="@string/rbNaranja"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/eTxtJugador1"
+            android:id="@+id/rbNaranjaJugador1"
+            tools:ignore="ObsoleteLayoutParam"
+            android:onClick="on_radiobutton_pulsado"/>
+
+
+        <RadioButton
+            android:text="@string/rbVerde"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rbNaranjaJugador1"
+            android:layout_alignStart="@+id/rgJugador1"
+            android:layout_marginTop="17dp"
+            android:id="@+id/rbVerdeJugador1"
+            tools:ignore="ObsoleteLayoutParam"
+            android:onClick="on_radiobutton_pulsado"/>
+
+        <RadioButton
+            android:text="@string/rbAzul"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:id="@+id/rbAzulJugador1"
+            android:onClick="on_radiobutton_pulsado"/>
+    </RadioGroup>
+
+    <TextView
+        android:text="@string/txtJugador2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:id="@+id/txtJugador2"
+        tools:ignore="HardcodedText"
+        android:layout_below="@+id/rgJugador1"
+        android:layout_alignStart="@+id/rgJugador1" />
+
+
+</RelativeLayout>

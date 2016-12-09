@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tres en Raya</string>
+    <string name="txtJugador1">JUGADOR 1 - Escoge nombre y color:</string>
+    <string name="txtJugador2">JUGADOR 2 - Escoge nombre y color:</string>
+    <string name="rbNaranja">Naranja</string>
+    <string name="rbVerde">Verde</string>
+    <string name="rbAzul">Azul</string>
+    <string name="btnJugar">¡A jugar!</string>
+    <string name="txtTurno">Turno de </string>
+    <string name="toastTrampa">¡No hagas trampa!</string>
+    <string name="toastVictoria">¡Tenemos ganador!¡</string>
+    <string name="btnVolver">Volver</string>
+    <string name="btnSalir">Salir</string>
+</resources>

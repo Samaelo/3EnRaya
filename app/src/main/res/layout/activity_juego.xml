@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_juego"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.garcia.mario.tresenraya.JuegoActivity">
+
+    <TextView
+        android:text="@string/txtTurno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="12dp"
+        android:id="@+id/txtTurno" />
+
+    <GridLayout
+        android:layout_height="300dp"
+        android:rowCount="3"
+        android:columnCount="3"
+        android:layout_width="300dp"
+        android:layout_below="@+id/txtTurno"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="31dp">
+
+        <Button
+            android:layout_height="100dp"
+            android:id="@+id/btn1"
+            android:layout_width="100dp"
+            android:onClick="onBtnPulsado"/>
+
+        <Button
+            android:layout_height="100dp"
+            android:id="@+id/btn2"
+            android:layout_width="100dp"
+            android:onClick="onBtnPulsado"/>
+
+        <Button
+            android:layout_height="100dp"
+            android:id="@+id/btn3"
+            android:layout_width="100dp"
+            android:onClick="onBtnPulsado"/>
+
+        <Button
+            android:layout_height="100dp"
+            android:id="@+id/btn4"
+            android:layout_width="100dp"
+            android:onClick="onBtnPulsado"/>
+
+        <Button
+            android:layout_height="100dp"
+            android:id="@+id/btn5"
+            android:layout_width="100dp"
+            android:onClick="onBtnPulsado"/>
+
+        <Button
+            android:layout_height="100dp"
+            android:id="@+id/btn6"
+            android:layout_width="100dp"
+            android:onClick="onBtnPulsado"/>
+
+        <Button
+            android:layout_height="100dp"
+            android:id="@+id/btn7"
+            android:layout_width="100dp"
+            android:onClick="onBtnPulsado"/>
+
+        <Button
+            android:layout_height="100dp"
+            android:id="@+id/btn8"
+            android:layout_width="100dp"
+            android:onClick="onBtnPulsado"/>
+        <Button
+            android:layout_height="100dp"
+            android:id="@+id/btn9"
+            android:layout_width="100dp"
+            android:onClick="onBtnPulsado"/>
+
+
+    </GridLayout>
+
+
+</RelativeLayout>
