@@ -9,6 +9,7 @@ import android.widget.RadioButton;
 
 import java.util.ArrayList;
 
+import model.AccesoFicheros;
 import model.Jugador;
 import model.Partida;
 
@@ -16,22 +17,27 @@ import model.Partida;
 public class MainActivity extends AppCompatActivity {
 
     RadioButton rbNaranjaJugador1, rbNaranjaJugador2, rbVerdeJugador1, rbVerdeJugador2,
-            rbAzulJugador1, rbAzulJugador2;
+                rbAzulJugador1, rbAzulJugador2;
     EditText eTxtJugador1,eTxtJugador2;
 
     final String COLOR_NARANJA = "#FF9900";
     final String COLOR_VERDE = "#097054";
     final String COLOR_AZUL = "#00628B";
+    AccesoFicheros af;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         cargar_componentes();
+        af = new AccesoFicheros();
 
-
+        af.escribirFichero();
+        af.leerFichero();
 
     }
+
     public void on_btnJugar_pulsado(View v){
         ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
         jugadores.add(new Jugador(eTxtJugador1.getText().toString(),""));
