@@ -16,7 +16,7 @@ public class AccesoFicheros{
 
     final private static String  FICHERO_CUADRO_HONOR = "cuadrohonor.txt";
 
-//////////ueeeeeeeeeeeeeeeeeeeeeeee          >//awegqwgqwegqwgqwgefdsgbfdebsdfb
+//////////ueeeeeeeeeeeeeeeeeeeeeeee
     public AccesoFicheros(){
 
     }
