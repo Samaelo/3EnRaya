@@ -6,14 +6,19 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
+import android.widget.Toast;
 
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 
 public class AccesoFicheros{
@@ -26,55 +31,68 @@ public class AccesoFicheros{
 
     }
 
-    public void escribirFichero(){
+    public void escribirFichero(Context contexto){
 
         BufferedWriter bufferedWriter = null;
 
+        String str = "tu puta madre en vinagre";
+        FileOutputStream fos = null;
+        OutputStreamWriter osw = null;
+        FileInputStream fis = null;
+        InputStreamReader isr = null;
+        BufferedReader br = null;
+
         try{
-            bufferedWriter = new BufferedWriter(new FileWriter(FICHERO_CUADRO_HONOR));
+            File fichero = new File(FICHERO_CUADRO_HONOR);
+            fos = contexto.openFileOutput(fichero.getName(), contexto.MODE_APPEND | contexto.MODE_PRIVATE);
+            osw = new OutputStreamWriter(fos);
 
-            bufferedWriter.write("Joputaaaaaaaaaa");
+            // Escribimos el String en el archivo
+            osw.append("\n" + str);
+
+            // Mostramos que se ha guardado
+            Toast.makeText(contexto.getApplicationContext(), "Guardado " + fichero.getName(), Toast.LENGTH_SHORT).show();
+
         }
-        catch (IOException e) {
-            System.out.println(e.getMessage());
+        catch (IOException ex){
+            ex.printStackTrace();
         }
+        finally {
 
-        finally{
-
-            if(bufferedWriter != null) {
-                try {
-                    bufferedWriter.close();
-                } catch (IOException e) {
-                    System.out.println("Se ha producido un error en la escritura del fichero " + FICHERO_CUADRO_HONOR);
+            try {
+                if(osw != null && fos != null) {
+                    osw.close();
+                    fos.close();
                 }
             }
+            catch (IOException e) {Toast.makeText(contexto.getApplicationContext(), "RETOCAAAAAAAAAAAAAAAAAAR", Toast.LENGTH_SHORT).show();}
         }
-    }
-
-    public void leerFichero(){
-
-        BufferedReader bufferedReader = null;
 
         try {
-            bufferedReader = new BufferedReader(new FileReader(FICHERO_CUADRO_HONOR));
-            String linea;
+            fis = contexto.openFileInput("cuadroHonor.txt");
+            isr = new InputStreamReader(fis);
+            br = new BufferedReader(isr);
 
-            linea = bufferedReader.readLine();
-            System.out.println("Contenido : " + linea);
+            String texto;
+
+            while((texto = br.readLine()) != null){
+
+                Toast.makeText(contexto.getApplicationContext(),"Contenido del fichero " + texto, Toast.LENGTH_LONG).show();
+
+            }
+
         }
-        catch (IOException e) {
-            System.out.println("Se ha producido un error de E/S");
-        }
+        catch (Exception ex){  Log.e("Ficheros", "Error al leer fichero desde memoria interna");}
 
-        finally{
-
-            if(bufferedReader != null){
-                try {
-                    bufferedReader.close();
-                } catch (IOException e) {
-                    System.out.println(" No se ha podido leer el fichero.");
+        finally {
+            try {
+                if(fis != null && isr != null && br != null) {
+                    br.close();
+                    isr.close();
+                    osw.close();
                 }
             }
+            catch (IOException e) { Toast.makeText(contexto.getApplicationContext(), "RETOCAAAAAAAAAAAAAAAAAAR", Toast.LENGTH_SHORT).show();}
         }
     }
 
@@ -98,7 +116,7 @@ public class AccesoFicheros{
      * Verifica que los permisos de escritura en la memoria externa están garantizados.
      * @param activity - La actividad que desea verificar los
      */
-    public static void verificarPermisosDeAlmacenamiento(Activity activity) {
+    public void verificarPermisosDeAlmacenamientoExterno(Activity activity) {
 
         int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
 

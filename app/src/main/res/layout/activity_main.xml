@@ -10,15 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.garcia.mario.tresenraya.MainActivity">
 
-    <TextView
-        android:text="@string/txtJugador1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtJugador1"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/eTxtJugador1"
-        tools:ignore="HardcodedText" />
-
 
     <EditText
         android:layout_width="wrap_content"
@@ -141,6 +132,25 @@
         tools:ignore="HardcodedText"
         android:layout_below="@+id/rgJugador1"
         android:layout_alignStart="@+id/rgJugador1" />
+
+    <Button
+        android:text="Crear fichero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/eTxtJugador2"
+        android:layout_toEndOf="@+id/btnJugar"
+        android:layout_marginTop="28dp"
+        android:id="@+id/btn_CrearFichero"
+        android:onClick="accionBoton"/>
+
+    <TextView
+        android:text="@string/txtJugador1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtJugador1"
+        tools:ignore="HardcodedText"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/eTxtJugador1" />
 
 
 </RelativeLayout>

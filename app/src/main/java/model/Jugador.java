@@ -15,6 +15,7 @@ public class Jugador implements Serializable{
 
     private ArrayList<Boton> botones_pulsados;
     private boolean turno = false;
+    
     public Jugador(String nombre, String color){
         this.nombre = nombre;
         this.color = color;

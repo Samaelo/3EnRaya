@@ -80,12 +80,11 @@ public class Partida implements Serializable{
      * @return - Devuelve 0 si el jugador ha ganado, 1 si pasa turno, 2 si la partida acaba por empate.
      */
     public int comprobarSolucion(){
+
         String solucion="";
         int resultado=1;
         ArrayList<Boton> botones_pulsados;
         boolean salir1=false, salir2 = false;
-
-
 
         for(int i = 0;i<jugadores.size() && !salir2;i++){//Iteramos la lista de jugadores
             if (jugadores.get(i).esTurno()){//Si es el turno del jugador iterado
@@ -96,17 +95,19 @@ public class Partida implements Serializable{
                         for(int k = 0; k<SOLUCIONES_POSIBLES[j].length && !salir1;k++){//Recorremos las casillas de la solución iterada
                             for(int l=0;l<botones_pulsados.size() && !salir1;l++){//Iteramos la lista de los botones pulsados por el jugador
                                 if(SOLUCIONES_POSIBLES[j][k] == botones_pulsados.get(l).getID()){//Por cada botón vemos si la id de la casilla iterada coincide con su id
-                                    solucion+=SOLUCIONES_POSIBLES[j][k];
+                                    solucion += SOLUCIONES_POSIBLES[j][k];
                                 }
 
                                 if(l == botones_pulsados.size()-1 && solucion.length()<3){//Si hemos comparado un numero de una posible solución con todos los botones pulsados
                                     salir1 = true;                                          // y ninguno de ellos coincide, ya no serán 3 en línea, por lo que saltamos a la siguiente solución posible.
+                                    solucion = "";
                                 }
+
 
                                 if(solucion.length()==3){//Victoria
                                     salir1 = true;
                                     salir2 = true;
-                                    resultado=0;
+                                    resultado = 0;
 
                                 }
                             }

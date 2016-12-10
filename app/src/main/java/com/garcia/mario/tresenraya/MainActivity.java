@@ -3,14 +3,24 @@ package com.garcia.mario.tresenraya;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import model.AccesoFicheros;
 import model.Jugador;
 import model.Partida;
 
@@ -27,19 +37,27 @@ public class MainActivity extends AppCompatActivity {
     final String COLOR_VERDE = "#097054";
     final String COLOR_AZUL = "#00628B";
 
+    Button btnCrear;
+    AccesoFicheros af = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         cargar_componentes();
 
+        btnCrear = (Button)findViewById(R.id.btn_CrearFichero);
 
     }
+
     public void on_btnJugar_pulsado(View v){
+
         ArrayList<Jugador> jugadores;
         Intent intent;
         String mensaje = validar_campos();
+
         if(mensaje.length()<3){
+
             jugadores = new ArrayList<Jugador>();
             Jugador j1 = new Jugador(eTxtJugador1.getText().toString(),obtener_color(1));
             j1.asignarTurno(true);
@@ -51,7 +69,8 @@ public class MainActivity extends AppCompatActivity {
             intent = new Intent(getApplicationContext(),JuegoActivity.class);
             intent.putExtra("PARTIDA",p);
             startActivity(intent);
-        }else{
+        }
+        else{
             Toast.makeText(this,mensaje,Toast.LENGTH_LONG).show();
         }
 
@@ -59,7 +78,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     public String validar_campos(){
+
         String mensaje="";
+
         if (eTxtJugador1.getText().toString().trim().equals("") || eTxtJugador2.getText().toString().trim().equals("")){
             mensaje = "Por favor, rellene los campos.";
         }else if(eTxtJugador1.getText().toString().equals(eTxtJugador2.getText().toString())){
@@ -67,9 +88,11 @@ public class MainActivity extends AppCompatActivity {
         }
         return mensaje;
     }
-    public String obtener_color(int jugador){
+    public String obtener_color(int idJugador){
+
         String res;
-        if (jugador == 1){
+
+        if (idJugador == 1){
             if(rbNaranjaJugador1.isChecked()){
                 res = COLOR_NARANJA;
             }else if(rbVerdeJugador1.isChecked()){
@@ -148,5 +171,68 @@ public class MainActivity extends AppCompatActivity {
         if(!rbNaranjaJugador2.isEnabled()) rbNaranjaJugador2.setEnabled(true);
         if(!rbVerdeJugador2.isEnabled()) rbVerdeJugador2.setEnabled(true);
         if(!rbAzulJugador2.isEnabled()) rbAzulJugador2.setEnabled(true);
+    }
+
+    public void accionBoton(View v){
+
+        String str = "tu puta madre en vinagre";
+        FileOutputStream fos = null;
+        OutputStreamWriter osw = null;
+        FileInputStream fis = null;
+        InputStreamReader isr = null;
+        BufferedReader br = null;
+
+        try{
+            File fichero = new File("cuadroHonor.txt");
+            fos = openFileOutput(fichero.getName(), MODE_APPEND | MODE_PRIVATE);
+            osw = new OutputStreamWriter(fos);
+
+            // Escribimos el String en el archivo
+            osw.append("\n" + str);
+
+            // Mostramos que se ha guardado
+            Toast.makeText(getBaseContext(), "Guardado " + fichero.getName(), Toast.LENGTH_SHORT).show();
+
+        }
+        catch (IOException ex){
+            ex.printStackTrace();
+        }
+        finally {
+
+            try {
+                if(osw != null && fos != null) {
+                    osw.close();
+                    fos.close();
+                }
+            }
+            catch (IOException e) {Toast.makeText(getBaseContext(), "RETOCAAAAAAAAAAAAAAAAAAR", Toast.LENGTH_SHORT).show();}
+        }
+
+        try {
+             fis = openFileInput("cuadroHonor.txt");
+             isr = new InputStreamReader(fis);
+             br = new BufferedReader(isr);
+
+            String texto;
+
+            while((texto = br.readLine()) != null){
+
+                Toast.makeText(getBaseContext(),"Contenido del fichero " + texto, Toast.LENGTH_LONG).show();
+
+            }
+
+        }
+        catch (Exception ex){  Log.e("Ficheros", "Error al leer fichero desde memoria interna");}
+
+        finally {
+            try {
+                if(fis != null && isr != null && br != null) {
+                    br.close();
+                    isr.close();
+                    osw.close();
+                }
+            }
+            catch (IOException e) { Toast.makeText(getBaseContext(), "RETOCAAAAAAAAAAAAAAAAAAR", Toast.LENGTH_SHORT).show();}
+        }
     }
 }
