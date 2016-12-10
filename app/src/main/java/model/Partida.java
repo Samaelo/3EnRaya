@@ -2,22 +2,27 @@ package model;
 
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Copiar de la doc.
  */
 
-public class Partida {
+public class Partida implements Serializable{
 
     private final int[][] SOLUCIONES_POSIBLES = {{1,2,3},{4,5,6},{7,8,9},{1,4,7},{2,5,8},{3,6,9},{1,5,9},{3,5,7}};
-
     private ArrayList<Jugador> jugadores;
     private ArrayList<Boton> botones_pulsados;
     private int total_botones_pulsados=0;
     private final String VICTORIA = "VICTORIA";
     private final String EMPATE = "EMPATE";
     private String resultado;
+    private Jugador jugador_actual;
+
 
 
     /**
@@ -28,6 +33,7 @@ public class Partida {
     public Partida(ArrayList<Jugador> jugadores){
         this.jugadores = jugadores;
         this.botones_pulsados = new ArrayList<Boton>();
+        jugador_actual = jugadores.get(0); //Jugador que tiene el turno
     }
 
     /**
@@ -35,12 +41,17 @@ public class Partida {
      * añada al jugador que tenga el turno.
      * @param b - Botón pulsado.
      */
-    public void pulsar_boton(Boton b){
+    public int pulsar_boton(Boton b){
+
         for(int i = 0;i<jugadores.size();i++) {//Iteramos la lista de jugadores
             if (jugadores.get(i).esTurno()) {//Si es el turno del jugador iterado
                 jugadores.get(i).agregarBotonPulsado(b);
+                total_botones_pulsados+=1; //Cada vez que se ejecute este método se habrá pulsado un botón.
             }
         }
+        return comprobarSolucion();
+
+
     }
     /**
      * Método que cambia el valor del turno de los jugadores. El jugador que tenga el turno
@@ -51,8 +62,10 @@ public class Partida {
             if(jugadores.get(i).esTurno()){
                 jugadores.get(i).asignarTurno(false);
 
+
             }else{
                 jugadores.get(i).asignarTurno(true);
+                jugador_actual = jugadores.get(i);
             }
         }
     }
@@ -71,7 +84,7 @@ public class Partida {
         ArrayList<Boton> botones_pulsados;
         boolean salir1=false, salir2 = false;
 
-        total_botones_pulsados+=1; //Cada vez que se ejecute este método se habrá pulsado un botón.
+
 
         for(int i = 0;i<jugadores.size() && !salir2;i++){//Iteramos la lista de jugadores
             if (jugadores.get(i).esTurno()){//Si es el turno del jugador iterado
@@ -112,6 +125,7 @@ public class Partida {
     public void finalizar(int codResultado){
 
     }
+
 
 
 }

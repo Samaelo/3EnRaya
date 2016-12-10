@@ -21,7 +21,7 @@ import android.widget.Button;
  *********************************/
 public class Boton extends Button {
 
-     private int id;
+    private int id;
     private boolean pulsado;
 
     public Boton(Context c,int id){
