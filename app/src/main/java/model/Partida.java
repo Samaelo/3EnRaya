@@ -4,6 +4,7 @@ package model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.widget.Toast;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -106,6 +107,7 @@ public class Partida implements Serializable{
                                     salir1 = true;
                                     salir2 = true;
                                     resultado=0;
+
                                 }
                             }
                         }

@@ -26,6 +26,7 @@ public class Boton extends Button {
 
     public Boton(Context c,int id){
         super(c);
+        this.id = id;
     }
 
     public int getID(){
