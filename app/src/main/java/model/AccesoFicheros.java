@@ -10,15 +10,13 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-/**
- * Created by Mario on 06/12/2016.
- */
+
 
 public class AccesoFicheros{
 
-    final static String FICHERO_CUADRO_HONOR = "cuadrohonor.txt";
+    final private static String  FICHERO_CUADRO_HONOR = "cuadrohonor.txt";
 
-//////////ueeeeeeeeeeeeeeeeeeeeeeee
+//////////ueeeeeeeeeeeeeeeeeeeeeeee          >//awegqwgqwegqwgqwge
     public AccesoFicheros(){
 
     }
