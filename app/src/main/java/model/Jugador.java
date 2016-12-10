@@ -37,4 +37,12 @@ public class Jugador implements Serializable{
     public void agregarBotonPulsado(Boton b){
         this.botones_pulsados.add(b);
     }
+
+    public String getColor() {
+        return color;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
 }

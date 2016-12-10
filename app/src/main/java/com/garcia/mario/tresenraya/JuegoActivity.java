@@ -27,15 +27,18 @@ public class JuegoActivity extends AppCompatActivity {
         Intent intent = getIntent();
         p = (Partida) intent.getExtras().getSerializable("PARTIDA");
         cargar_componentes();
+        actualizar_txtTurno();
 
     }
 
 
 
     public void onBtnPulsado(View v){
-        switch(v.getId()){
+        Button btn = (Button) v;
+        switch(btn.getId()){
             case id_btn1:
                 pulsar_boton(1);
+
                 break;
             case id_btn2:
                 pulsar_boton(2);
@@ -61,21 +64,24 @@ public class JuegoActivity extends AppCompatActivity {
             case id_btn9:
                 pulsar_boton(9);
                 break;
-
-
         }
+        btn.setEnabled(false);
     }
     public void pasarTurno(){
         p.pasarTurno();
-        //txtTurno
+        actualizar_txtTurno();
+
     }
 
     public void cargar_componentes(){
         txtTurno = (TextView) findViewById(R.id.txtTurno);
-
-
     }
 
+    public void actualizar_txtTurno(){
+        String textoTurno = String.format(getResources().getString(R.string.txtTurno), p.getJugador_actual().getNombre());
+
+        txtTurno.setText(textoTurno);
+    }
     public int comprobarSolucion(){
         return p.comprobarSolucion();
     }

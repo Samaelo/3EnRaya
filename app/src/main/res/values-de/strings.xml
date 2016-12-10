@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tic Tac Toe</string>
+    <string name="btnJugar">Lassen Sie uns spielen!</string>
+    <string name="btnSalir">Ausfahrt</string>
+    <string name="btnVolver">Rückkehr</string>
+    <string name="rbAzul">Blau</string>
+    <string name="rbNaranja">Orange</string>
+    <string name="rbVerde">Grün</string>
+    <string name="toastTrampa">Nicht betrügen</string>
+    <string name="toastVictoria">%1$s ist der Gewinner</string>
+    <string name="txtJugador1">Spielernamen 1 - Wählen Sie und Farbe</string>
+    <string name="txtJugador2">Spielernamen 2 - Wählen Sie und Farbe</string>
+    <string name="txtTurno">%1$s Verschiebung</string>
+    <string name="toastEmpate">Zeichnen!</string>
+</resources>

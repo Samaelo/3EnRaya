@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
             rbAzulJugador1, rbAzulJugador2;
     EditText eTxtJugador1,eTxtJugador2;
 
+    final int id_rbNaranjaJugador1 = R.id.rbNaranjaJugador1, id_rbNaranjaJugador2 = R.id.rbNaranjaJugador2, id_rbVerdeJugador1 = R.id.rbVerdeJugador1, id_rbVerdeJugador2 = R.id.rbVerdeJugador2, id_rbAzulJugador1 = R.id.rbAzulJugador1, id_rbAzulJugador2 = R.id.rbAzulJugador2;
+
     final String COLOR_NARANJA = "#FF9900";
     final String COLOR_VERDE = "#097054";
     final String COLOR_AZUL = "#00628B";
@@ -93,27 +95,27 @@ public class MainActivity extends AppCompatActivity {
     public void bloquear_radiobutton(View v){
         RadioButton rb = (RadioButton) v;
         switch(rb.getId()){
-            case R.id.rbNaranjaJugador1:
+            case id_rbNaranjaJugador1:
                 activar_radiobuttons_jugador2();
                 rbNaranjaJugador2.setEnabled(false);
                 break;
-            case R.id.rbNaranjaJugador2:
+            case id_rbNaranjaJugador2:
                 activar_radiobuttons_jugador1();
                 rbNaranjaJugador1.setEnabled(false);
                 break;
-            case R.id.rbVerdeJugador1:
+            case id_rbVerdeJugador1:
                 activar_radiobuttons_jugador2();
                 rbVerdeJugador2.setEnabled(false);
                 break;
-            case R.id.rbVerdeJugador2:
+            case id_rbVerdeJugador2:
                 activar_radiobuttons_jugador1();
                 rbVerdeJugador1.setEnabled(false);
                 break;
-            case R.id.rbAzulJugador1:
+            case id_rbAzulJugador1:
                 activar_radiobuttons_jugador2();
                 rbAzulJugador2.setEnabled(false);
                 break;
-            case R.id.rbAzulJugador2:
+            case id_rbAzulJugador2:
                 activar_radiobuttons_jugador1();
                 rbAzulJugador1.setEnabled(false);
                 break;
@@ -121,14 +123,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void cargar_componentes(){
-        rbNaranjaJugador1 = (RadioButton) findViewById(R.id.rbNaranjaJugador1);
-        rbNaranjaJugador2 = (RadioButton) findViewById(R.id.rbNaranjaJugador2);
-        rbVerdeJugador1 = (RadioButton) findViewById(R.id.rbVerdeJugador1);
-        rbVerdeJugador2 = (RadioButton) findViewById(R.id.rbVerdeJugador2);
-        rbAzulJugador1 = (RadioButton) findViewById(R.id.rbAzulJugador1);
-        rbAzulJugador2 = (RadioButton) findViewById(R.id.rbAzulJugador2);
+        rbNaranjaJugador1 = (RadioButton) findViewById(id_rbNaranjaJugador1);
+        rbNaranjaJugador2 = (RadioButton) findViewById(id_rbNaranjaJugador2);
+        rbVerdeJugador1 = (RadioButton) findViewById(id_rbVerdeJugador1);
+        rbVerdeJugador2 = (RadioButton) findViewById(id_rbVerdeJugador2);
+        rbAzulJugador1 = (RadioButton) findViewById(id_rbAzulJugador1);
+        rbAzulJugador2 = (RadioButton) findViewById(id_rbAzulJugador2);
         eTxtJugador1 = (EditText) findViewById(R.id.eTxtJugador1);
         eTxtJugador2 = (EditText) findViewById(R.id.eTxtJugador2);
+
 
 
 

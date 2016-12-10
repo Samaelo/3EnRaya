@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="btnJugar">Kucheza mpira</string>
+    <string name="btnSalir">Exit</string>
+    <string name="btnVolver">Kurudi</string>
+    <string name="rbAzul">Bluu</string>
+    <string name="rbNaranja">Machungwa</string>
+    <string name="rbVerde">Kijani</string>
+    <string name="toastTrampa">Je, si kudanganya!</string>
+    <string name="toastVictoria">Mshindi ni %1$s!</string>
+    <string name="txtJugador1">MCHEZAJI 1 - Chagua jina na rangi:</string>
+    <string name="txtJugador2">MCHEZAJI 2 - Chagua jina na rangi:</string>
+    <string name="txtTurno">upande %1$s</string>
+    <string name="toastEmpate">Kuteka!</string>
+</resources>

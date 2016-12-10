@@ -127,5 +127,7 @@ public class Partida implements Serializable{
     }
 
 
-
+    public Jugador getJugador_actual() {
+        return jugador_actual;
+    }
 }

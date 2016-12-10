@@ -56,7 +56,8 @@
             android:layout_marginTop="24dp"
             android:id="@+id/rbNaranjaJugador2"
             tools:ignore="ObsoleteLayoutParam"
-            android:onClick="on_radiobutton_pulsado"/>
+            android:onClick="on_radiobutton_pulsado"
+            android:enabled="false" />
 
         <RadioButton
             android:text="@string/rbVerde"
@@ -67,7 +68,8 @@
             android:layout_marginTop="14dp"
             android:id="@+id/rbVerdeJugador2"
             tools:ignore="ObsoleteLayoutParam"
-            android:onClick="on_radiobutton_pulsado"/>
+            android:onClick="on_radiobutton_pulsado"
+            android:checked="true" />
 
         <RadioButton
             android:text="@string/rbAzul"
@@ -87,7 +89,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/btnJugar"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="on_btnJugar_pulsado"/>
 
 
     <RadioGroup
@@ -104,7 +107,8 @@
             android:layout_below="@+id/eTxtJugador1"
             android:id="@+id/rbNaranjaJugador1"
             tools:ignore="ObsoleteLayoutParam"
-            android:onClick="on_radiobutton_pulsado"/>
+            android:onClick="on_radiobutton_pulsado"
+            android:checked="true" />
 
 
         <RadioButton
@@ -116,7 +120,8 @@
             android:layout_marginTop="17dp"
             android:id="@+id/rbVerdeJugador1"
             tools:ignore="ObsoleteLayoutParam"
-            android:onClick="on_radiobutton_pulsado"/>
+            android:onClick="on_radiobutton_pulsado"
+            android:enabled="false" />
 
         <RadioButton
             android:text="@string/rbAzul"
