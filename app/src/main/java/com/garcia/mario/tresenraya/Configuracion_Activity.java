@@ -1,34 +1,21 @@
 package com.garcia.mario.tresenraya;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.icu.text.DateFormat;
-import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.Serializable;
 import java.util.ArrayList;
 
 import model.AccesoFicheros;
 import model.Jugador;
 import model.Partida;
 
-//quesito
-public class MainActivity extends AppCompatActivity {
+
+public class Configuracion_Activity extends AppCompatActivity {
 
     RadioButton rbNaranjaJugador1, rbNaranjaJugador2, rbVerdeJugador1, rbVerdeJugador2,
             rbAzulJugador1, rbAzulJugador2;
@@ -49,9 +36,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         cargar_componentes();
 
-
-        btnCrear = (Button)findViewById(R.id.btn_CrearFichero);
-
     }
 
     public void on_btnJugar_pulsado(View v){
@@ -70,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
             Partida p = new Partida(jugadores);
 
-            intent = new Intent(getApplicationContext(),JuegoActivity.class);
+            intent = new Intent(getApplicationContext(),Juego_Activity.class);
             intent.putExtra("PARTIDA",p);
             startActivityForResult(intent,1);
         }

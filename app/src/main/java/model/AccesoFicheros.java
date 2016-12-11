@@ -4,9 +4,6 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.icu.text.DateFormat;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.widget.Toast;
@@ -19,19 +16,16 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.StringTokenizer;
 
 
 public class AccesoFicheros {
 
-    final private static String FICHERO_CUADRO_HONOR = "cuadro_honor.txt";
+    final private static String FICHERO_CUADRO_HONOR = "cuadrohonor.txt";
 
     Context contexto;
     Partida partida;
@@ -48,11 +42,10 @@ public class AccesoFicheros {
      * Devuelve 1 si ha ocurrido algún error.
      */
     public int guardarResultadoEnFichero() {
+
         int cod_resultado = 0;
-        BufferedWriter bufferedWriter = null;
         FileOutputStream fos = null;
         OutputStreamWriter osw = null;
-
 
         String jugador1 = partida.getJugadores().get(0).getNombre();
         String jugador2 = partida.getJugadores().get(1).getNombre();
@@ -90,7 +83,8 @@ public class AccesoFicheros {
         FileInputStream fis = null;
         InputStreamReader isr = null;
         BufferedReader br = null;
-
+        String versus = "";
+        String ganador = "";
 
         try {
             fis = contexto.openFileInput(FICHERO_CUADRO_HONOR);
@@ -101,15 +95,17 @@ public class AccesoFicheros {
 
             while ((texto = br.readLine()) != null) {
                 StringTokenizer st1 = new StringTokenizer(texto,",");
-                String versus = st1.nextToken();
-                String ganador = st1.nextToken();
+
+                while(st1.hasMoreTokens()){
+                    versus = st1.nextToken();
+                    ganador = st1.nextToken();
+                }
 
                 String resultado_partida = "Partida: " + versus + ". Ganador: " + ganador;
                 partidas_ganadas.add(resultado_partida);
-
+                Toast.makeText(contexto.getApplicationContext(), resultado_partida, Toast.LENGTH_SHORT).show();
 
             }
-
         }
         catch (Exception ex) {
             Log.e("Ficheros", "Error al leer fichero desde memoria interna");
@@ -127,8 +123,6 @@ public class AccesoFicheros {
         }
         return partidas_ganadas;
     }
-
-
 
     // -- PETICIÓN DE PERSMISOS -- //
 

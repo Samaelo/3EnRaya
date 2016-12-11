@@ -1,6 +1,5 @@
 package com.garcia.mario.tresenraya;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -10,14 +9,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-
 import model.AccesoFicheros;
 import model.Boton;
-import model.Jugador;
 import model.Partida;
 
-public class JuegoActivity extends AppCompatActivity {
+public class Juego_Activity extends AppCompatActivity {
 
     Partida partida;
 
@@ -105,16 +101,15 @@ public class JuegoActivity extends AppCompatActivity {
         return partida.comprobarSolucion();
     }
 
-    // -- POSIBLE MÉTODO DONDE GUARDAR LOS DATOS DE LA PARTIDA EN EL FICHERO --  A la vez que devolvemos el resultado al MainActivity, lo guardamos en el fichero //
+    // -- POSIBLE MÉTODO DONDE GUARDAR LOS DATOS DE LA PARTIDA EN EL FICHERO --  A la vez que devolvemos el resultado al Configuracion_Activity, lo guardamos en el fichero //
 
     public void finalizar_partida(int resultado){
 
         if(resultado == 0){
 
             accesoFichero.guardarResultadoEnFichero();
-            accesoFichero.leerDatosDeFichero();
 
-            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+            Intent intent = new Intent(getApplicationContext(),Configuracion_Activity.class);
             intent.putExtra("GANADOR",partida.getJugador_actual().getNombre());
             setResult(resultado,intent);
 

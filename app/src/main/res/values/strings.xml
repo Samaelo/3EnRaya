@@ -13,4 +13,5 @@
     <string name="toastEmpate"> Draw!</string>
     <string name="toastVictoria"> The winner is %1$s!</string>
     <string name="partidaGuardada"> %1$s vs %2$s,%3$s</string>
+    <string name="listaGanadores">List of Winners</string>
 </resources>

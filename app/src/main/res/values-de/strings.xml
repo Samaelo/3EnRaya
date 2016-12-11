@@ -13,4 +13,6 @@
     <string name="txtJugador2">Spielernamen 2 - Wählen Sie und Farbe</string>
     <string name="txtTurno">%1$s Verschiebung</string>
     <string name="toastEmpate">Zeichnen!</string>
+    <string name="listaGanadores">Liste der Gewinner</string>
+    <string name="partidaGuardada">" %1$s vs %2$s,%3$s"</string>
 </resources>

@@ -12,4 +12,7 @@
     <string name="txtJugador2">MCHEZAJI 2 - Chagua jina na rangi:</string>
     <string name="txtTurno">upande %1$s</string>
     <string name="toastEmpate">Kuteka!</string>
+    <string name="app_name">Noughts na misalaba</string>
+    <string name="partidaGuardada">" %1$s vs %2$s,%3$s"</string>
+    <string name="listaGanadores">Orodha ya washindi</string>
 </resources>
