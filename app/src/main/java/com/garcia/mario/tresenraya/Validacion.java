@@ -8,7 +8,7 @@ public class Validacion {
 
     public Validacion(){}
 
-    private String listaExclusion = "ºª\\!|@·#€~~$%&¬/()='?¡¿`^[*+]}¨´{Juego_Activity*:.;,<>";
+    private String listaExclusion = "ºª\\!|@·#€~~$%&¬/()='?¡¿`^[*+]}¨´{_*:.;,<>";
     private int codigoError = 0;
 
     public int validarNombreJugador(String nombre1, String nombre2){
@@ -26,15 +26,10 @@ public class Validacion {
                 return 2; // Nombres iguales
 
             else {
-                for (int j = 1; j < nombres[i].length(); j++) {
-                    charNombre = listaExclusion.charAt(i);
-
-                    for (int k = 1; k < listaExclusion.length(); k ++) {
-
-                        charListaExclusion = listaExclusion.charAt(k);
-                        if(charNombre == charListaExclusion)
-                            return 3; // Algún nombre tiene un carácter no válido
-                    }
+                for (int j = 0; j < listaExclusion.length(); j ++) {
+                    charListaExclusion = listaExclusion.charAt(j);
+                    if(nombres[i].contains(charListaExclusion+""))
+                        return 3; // Algún nombre tiene un carácter no válido
                 }
             }
         }

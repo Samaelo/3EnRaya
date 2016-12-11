@@ -22,6 +22,7 @@ public class Juego_Activity extends AppCompatActivity {
             id_btn9 = R.id.btn9;
 
     TextView txtTurno;
+
     AccesoFicheros accesoFichero;
 
     @Override
@@ -88,6 +89,8 @@ public class Juego_Activity extends AppCompatActivity {
 
     public void cargar_componentes(){
         txtTurno = (TextView) findViewById(R.id.txtTurno);
+
+
     }
 
     public void actualizar_txtTurno(){
