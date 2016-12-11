@@ -24,7 +24,6 @@ public class Figura extends View {
         miPincel.setStrokeWidth(10);
         miPincel.setStyle(Paint.Style.STROKE);
 
-
     }
 
 }

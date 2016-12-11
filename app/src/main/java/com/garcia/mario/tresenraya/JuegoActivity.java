@@ -36,6 +36,7 @@ public class JuegoActivity extends AppCompatActivity {
         partida = (Partida) intent.getExtras().getSerializable("PARTIDA");
         cargar_componentes();
         actualizar_txtTurno();
+        accesoFichero = new AccesoFicheros(getApplicationContext(),partida);
 
     }
 

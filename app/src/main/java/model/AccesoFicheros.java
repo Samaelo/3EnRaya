@@ -24,11 +24,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.StringTokenizer;
 
 
 public class AccesoFicheros {
 
-    final private static String FICHERO_CUADRO_HONOR = "cuadrohonor.txt";
+    final private static String FICHERO_CUADRO_HONOR = "cuadro_honor.txt";
 
     Context contexto;
     Partida partida;
@@ -38,8 +41,14 @@ public class AccesoFicheros {
         this.partida = partida;
     }
 
-    public void guardarResultadoEnFichero() {
-
+    /**
+     * Método encargado de almacenar el resultado de la partida en el fichero "cuadrohonor.txt".
+     *
+     * @return - Devuelve 0 en caso de que se haya almacenado correctamente la información.
+     * Devuelve 1 si ha ocurrido algún error.
+     */
+    public int guardarResultadoEnFichero() {
+        int cod_resultado = 0;
         BufferedWriter bufferedWriter = null;
         FileOutputStream fos = null;
         OutputStreamWriter osw = null;
@@ -58,43 +67,46 @@ public class AccesoFicheros {
 
             // Escribimos el String en el archivo
             osw.append("\n" + resultadoPartida);
-
-            // Mostramos que se ha guardado
-            Toast.makeText(contexto.getApplicationContext(), "Guardado " + fichero.getName(), Toast.LENGTH_SHORT).show();
-
         }
         catch (IOException ex) {
-            ex.printStackTrace();
+            cod_resultado = 1;
         }
         finally {
 
             try {
-                if (osw != null && fos != null) {
-                    osw.close();
-                    fos.close();
-                }
+                if (osw != null) osw.close();
+                if (fos!=null) fos.close();
+
             } catch (IOException e) {
-                Toast.makeText(contexto.getApplicationContext(), "RETOCAAAAAAAAAAAAAAAAAAR", Toast.LENGTH_SHORT).show();
+                cod_resultado = 1;
             }
+            return cod_resultado;
         }
     }
 
-    public void leerDatosDeFichero() {
+    public ArrayList<String> leerDatosDeFichero() {
 
+        ArrayList<String> partidas_ganadas = new ArrayList<String>();
         FileInputStream fis = null;
         InputStreamReader isr = null;
         BufferedReader br = null;
 
+
         try {
-            fis = contexto.openFileInput("cuadroHonor.txt");
+            fis = contexto.openFileInput(FICHERO_CUADRO_HONOR);
             isr = new InputStreamReader(fis);
             br = new BufferedReader(isr);
 
             String texto;
 
             while ((texto = br.readLine()) != null) {
+                StringTokenizer st1 = new StringTokenizer(texto,",");
+                String versus = st1.nextToken();
+                String ganador = st1.nextToken();
 
-                Toast.makeText(contexto.getApplicationContext(), "Contenido del fichero " + texto, Toast.LENGTH_LONG).show();
+                String resultado_partida = "Partida: " + versus + ". Ganador: " + ganador;
+                partidas_ganadas.add(resultado_partida);
+
 
             }
 
@@ -113,6 +125,7 @@ public class AccesoFicheros {
                 Toast.makeText(contexto.getApplicationContext(), "RETOCAAAAAAAAAAAAAAAAAAR", Toast.LENGTH_SHORT).show();
             }
         }
+        return partidas_ganadas;
     }
 
 
