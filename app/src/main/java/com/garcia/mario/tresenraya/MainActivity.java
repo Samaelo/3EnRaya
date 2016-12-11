@@ -79,20 +79,22 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
+        String ganador;
 
-        Partida partida = (Partida) data.getExtras().getSerializable("PARTIDA");
         String mensaje_victoria;
         String mensaje_empate;
         if(requestCode==1){
             if (resultCode == 0){
-
-                mensaje_victoria = String.format(getResources().getString(R.string.toastVictoria), partida.getJugador_actual().getNombre());
+                ganador = data.getExtras().getString("GANADOR");
+                mensaje_victoria = String.format(getResources().getString(R.string.toastVictoria), ganador);
                 Toast.makeText(this,mensaje_victoria,Toast.LENGTH_LONG).show();
-            }else{
+            }else if (resultCode == 2){
 
                 mensaje_empate = String.format(getResources().getString(R.string.toastEmpate));
                 Toast.makeText(this,mensaje_empate,Toast.LENGTH_LONG).show();
 
+            }else if (resultCode == 3){
+                Toast.makeText(this,"Partida finalizada.",Toast.LENGTH_SHORT).show();
             }
         }
 

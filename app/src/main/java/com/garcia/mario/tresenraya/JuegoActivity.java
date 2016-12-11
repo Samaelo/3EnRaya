@@ -103,17 +103,27 @@ public class JuegoActivity extends AppCompatActivity {
     }
 
     public void finalizar_partida(int resultado){
-        partida.finalizar(resultado);
 
-      //  Intent intent = new Intent();
-        //intent.putExtra("PARTIDA",partida);
-        setResult(resultado);
-        super.finish();
+
+        if(resultado == 0){
+            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+            intent.putExtra("GANADOR",partida.getJugador_actual().getNombre());
+            setResult(resultado,intent);
+        }else{
+            setResult(resultado);
+        }
+
+
+        finish();
 
 
     }
+
     @Override
     public void onBackPressed() {
+        setResult(3);
+        super.finish();
+
 
     }
     public void pulsar_boton(int idBoton, Button boton){
