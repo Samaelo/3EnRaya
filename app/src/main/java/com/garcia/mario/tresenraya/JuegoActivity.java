@@ -83,6 +83,7 @@ public class JuegoActivity extends AppCompatActivity {
 
         boton.setText(partida.getJugador_actual().getNombre());
         boton.setTextColor(Color.parseColor(partida.getJugador_actual().getColor()));
+
     }
 
     public void cargar_componentes(){
@@ -92,8 +93,8 @@ public class JuegoActivity extends AppCompatActivity {
     public void actualizar_txtTurno(){
 
         String textoTurno = String.format(getResources().getString(R.string.txtTurno), partida.getJugador_actual().getNombre());
-
         txtTurno.setText(textoTurno);
+        txtTurno.setTextColor(Color.parseColor(partida.getJugador_actual().getColor()));
     }
 
     public int comprobarSolucion(){
