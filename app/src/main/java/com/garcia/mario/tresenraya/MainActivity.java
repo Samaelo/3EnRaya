@@ -2,6 +2,8 @@ package com.garcia.mario.tresenraya;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.icu.text.DateFormat;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -47,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         cargar_componentes();
 
+
         btnCrear = (Button)findViewById(R.id.btn_CrearFichero);
 
     }
@@ -55,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<Jugador> jugadores;
         Intent intent;
-        String mensaje = validar_campos();
+        String mensaje = validar_campos(eTxtJugador1.getText().toString(), eTxtJugador2.getText().toString());
 
         if(mensaje.length()<3){
 
@@ -74,20 +77,22 @@ public class MainActivity extends AppCompatActivity {
         else{
             Toast.makeText(this,mensaje,Toast.LENGTH_LONG).show();
         }
-
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
-        String ganador;
 
+        String ganador;
         String mensaje_victoria;
         String mensaje_empate;
+
         if(requestCode==1){
             if (resultCode == 0){
                 ganador = data.getExtras().getString("GANADOR");
                 mensaje_victoria = String.format(getResources().getString(R.string.toastVictoria), ganador);
                 Toast.makeText(this,mensaje_victoria,Toast.LENGTH_LONG).show();
+
             }else if (resultCode == 2){
 
                 mensaje_empate = String.format(getResources().getString(R.string.toastEmpate));
@@ -97,21 +102,30 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this,"Partida finalizada.",Toast.LENGTH_SHORT).show();
             }
         }
-
     }
 
-
-    public String validar_campos(){
+    public String validar_campos(String nombreJ1, String nombreJ2){
 
         String mensaje="";
+        Validacion validar = new Validacion();
 
-        if (eTxtJugador1.getText().toString().trim().equals("") || eTxtJugador2.getText().toString().trim().equals("")){
-            mensaje = "Por favor, rellene los campos.";
-        }else if(eTxtJugador1.getText().toString().equals(eTxtJugador2.getText().toString())){
-            mensaje = "Los nombres no deben coincidir.";
+        int codigoError = validar.validarNombreJugador(nombreJ1, nombreJ2);
+
+        switch (codigoError){
+
+            case 1:
+                    mensaje = "Alguno de los nombres está en blanco";
+                    break;
+            case 2:
+                    mensaje = "Los nombres son iguales";
+                    break;
+            case 3:
+                    mensaje = "Alguno de los nombres contiene carácteres no válidos";
+                    break;
         }
         return mensaje;
     }
+
     public String obtener_color(int idJugador){
 
         String res;
@@ -135,6 +149,7 @@ public class MainActivity extends AppCompatActivity {
         }
         return res;
     }
+
     public void on_radiobutton_pulsado(View v){
         bloquear_radiobutton(v);
     }
@@ -179,9 +194,6 @@ public class MainActivity extends AppCompatActivity {
         eTxtJugador1 = (EditText) findViewById(R.id.eTxtJugador1);
         eTxtJugador2 = (EditText) findViewById(R.id.eTxtJugador2);
 
-
-
-
     }
 
     public void activar_radiobuttons_jugador1(){
@@ -191,72 +203,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
     public void activar_radiobuttons_jugador2(){
         if(!rbNaranjaJugador2.isEnabled()) rbNaranjaJugador2.setEnabled(true);
         if(!rbVerdeJugador2.isEnabled()) rbVerdeJugador2.setEnabled(true);
         if(!rbAzulJugador2.isEnabled()) rbAzulJugador2.setEnabled(true);
-    }
-
-    public void accionBoton(View v){
-
-        String str = "tu puta madre en vinagre";
-        FileOutputStream fos = null;
-        OutputStreamWriter osw = null;
-        FileInputStream fis = null;
-        InputStreamReader isr = null;
-        BufferedReader br = null;
-
-        try{
-            File fichero = new File("cuadroHonor.txt");
-            fos = openFileOutput(fichero.getName(), MODE_APPEND | MODE_PRIVATE);
-            osw = new OutputStreamWriter(fos);
-
-            // Escribimos el String en el archivo
-            osw.append("\n" + str);
-
-            // Mostramos que se ha guardado
-            Toast.makeText(getBaseContext(), "Guardado " + fichero.getName(), Toast.LENGTH_SHORT).show();
-
-        }
-        catch (IOException ex){
-            ex.printStackTrace();
-        }
-        finally {
-
-            try {
-                if(osw != null && fos != null) {
-                    osw.close();
-                    fos.close();
-                }
-            }
-            catch (IOException e) {Toast.makeText(getBaseContext(), "RETOCAAAAAAAAAAAAAAAAAAR", Toast.LENGTH_SHORT).show();}
-        }
-
-        try {
-             fis = openFileInput("cuadroHonor.txt");
-             isr = new InputStreamReader(fis);
-             br = new BufferedReader(isr);
-
-            String texto;
-
-            while((texto = br.readLine()) != null){
-
-                Toast.makeText(getBaseContext(),"Contenido del fichero " + texto, Toast.LENGTH_LONG).show();
-
-            }
-
-        }
-        catch (Exception ex){  Log.e("Ficheros", "Error al leer fichero desde memoria interna");}
-
-        finally {
-            try {
-                if(fis != null && isr != null && br != null) {
-                    br.close();
-                    isr.close();
-                    osw.close();
-                }
-            }
-            catch (IOException e) { Toast.makeText(getBaseContext(), "RETOCAAAAAAAAAAAAAAAAAAR", Toast.LENGTH_SHORT).show();}
-        }
     }
 }

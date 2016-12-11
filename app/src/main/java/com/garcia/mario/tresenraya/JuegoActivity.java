@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import model.AccesoFicheros;
 import model.Boton;
 import model.Jugador;
 import model.Partida;
@@ -25,6 +26,7 @@ public class JuegoActivity extends AppCompatActivity {
             id_btn9 = R.id.btn9;
 
     TextView txtTurno;
+    AccesoFicheros accesoFichero;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,47 +104,48 @@ public class JuegoActivity extends AppCompatActivity {
         return partida.comprobarSolucion();
     }
 
+    // -- POSIBLE MÉTODO DONDE GUARDAR LOS DATOS DE LA PARTIDA EN EL FICHERO --  A la vez que devolvemos el resultado al MainActivity, lo guardamos en el fichero //
+
     public void finalizar_partida(int resultado){
 
-
         if(resultado == 0){
+
+            accesoFichero.guardarResultadoEnFichero();
+            accesoFichero.leerDatosDeFichero();
+
             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
             intent.putExtra("GANADOR",partida.getJugador_actual().getNombre());
             setResult(resultado,intent);
+
         }else{
             setResult(resultado);
         }
-
-
         finish();
-
-
     }
 
     @Override
     public void onBackPressed() {
         setResult(3);
         super.finish();
-
-
     }
+
     public void pulsar_boton(int idBoton, Button boton){
 
         String mensaje_trampa = String.format(getResources().getString(R.string.toastTrampa));
+
         if( boton.getText().toString().trim().equals("")){
             ponerNombreJugador(boton);
             int resultado = partida.pulsar_boton(new Boton(getBaseContext(),idBoton));
+
             if(resultado ==1){
                 pasarTurno();
-            }else{
+            }
+            else{
                 finalizar_partida(resultado);
             }
-        }else{
+        }
+        else{
             Toast.makeText(getApplicationContext(), mensaje_trampa, Toast.LENGTH_SHORT).show();
         }
-
-
-
-
     }
 }

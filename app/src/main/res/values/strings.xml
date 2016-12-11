@@ -12,4 +12,5 @@
     <string name="toastTrampa">Don\'t cheat!</string>
     <string name="toastEmpate"> Draw!</string>
     <string name="toastVictoria"> The winner is %1$s!</string>
+    <string name="partidaGuardada"> %1$s vs %2$s,%3$s</string>
 </resources>

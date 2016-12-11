@@ -4,10 +4,15 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.icu.text.DateFormat;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.widget.Toast;
 
+
+import com.garcia.mario.tresenraya.R;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -21,52 +26,64 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 
-public class AccesoFicheros{
+public class AccesoFicheros {
 
-    final private static String  FICHERO_CUADRO_HONOR = "cuadrohonor.txt";
+    final private static String FICHERO_CUADRO_HONOR = "cuadrohonor.txt";
 
-    ////pepeGUAY
+    Context contexto;
+    Partida partida;
 
-    public AccesoFicheros(){
-
+    public AccesoFicheros(Context contexto, Partida partida){
+        this.contexto = contexto;
+        this.partida = partida;
     }
 
-    public void escribirFichero(Context contexto){
+    public void guardarResultadoEnFichero() {
 
         BufferedWriter bufferedWriter = null;
-
-        String str = "tu puta madre en vinagre";
         FileOutputStream fos = null;
         OutputStreamWriter osw = null;
-        FileInputStream fis = null;
-        InputStreamReader isr = null;
-        BufferedReader br = null;
 
-        try{
+
+        String jugador1 = partida.getJugadores().get(0).getNombre();
+        String jugador2 = partida.getJugadores().get(1).getNombre();
+        String ganador = partida.getJugador_actual().getNombre();
+
+        String resultadoPartida = String.format(contexto.getResources().getString(R.string.partidaGuardada), jugador1, jugador2, ganador);
+
+        try {
             File fichero = new File(FICHERO_CUADRO_HONOR);
             fos = contexto.openFileOutput(fichero.getName(), contexto.MODE_APPEND | contexto.MODE_PRIVATE);
             osw = new OutputStreamWriter(fos);
 
             // Escribimos el String en el archivo
-            osw.append("\n" + str);
+            osw.append("\n" + resultadoPartida);
 
             // Mostramos que se ha guardado
             Toast.makeText(contexto.getApplicationContext(), "Guardado " + fichero.getName(), Toast.LENGTH_SHORT).show();
 
         }
-        catch (IOException ex){
+        catch (IOException ex) {
             ex.printStackTrace();
         }
         finally {
 
             try {
-                if(osw != null && fos != null) {
+                if (osw != null && fos != null) {
                     osw.close();
                     fos.close();
                 }
+            } catch (IOException e) {
+                Toast.makeText(contexto.getApplicationContext(), "RETOCAAAAAAAAAAAAAAAAAAR", Toast.LENGTH_SHORT).show();
             }
-            catch (IOException e) {Toast.makeText(contexto.getApplicationContext(), "RETOCAAAAAAAAAAAAAAAAAAR", Toast.LENGTH_SHORT).show();}
         }
+    }
+
+    public void leerDatosDeFichero() {
+
+        FileInputStream fis = null;
+        InputStreamReader isr = null;
+        BufferedReader br = null;
 
         try {
             fis = contexto.openFileInput("cuadroHonor.txt");
@@ -75,26 +92,29 @@ public class AccesoFicheros{
 
             String texto;
 
-            while((texto = br.readLine()) != null){
+            while ((texto = br.readLine()) != null) {
 
-                Toast.makeText(contexto.getApplicationContext(),"Contenido del fichero " + texto, Toast.LENGTH_LONG).show();
+                Toast.makeText(contexto.getApplicationContext(), "Contenido del fichero " + texto, Toast.LENGTH_LONG).show();
 
             }
 
         }
-        catch (Exception ex){  Log.e("Ficheros", "Error al leer fichero desde memoria interna");}
-
+        catch (Exception ex) {
+            Log.e("Ficheros", "Error al leer fichero desde memoria interna");
+        }
         finally {
             try {
-                if(fis != null && isr != null && br != null) {
+                if (fis != null && isr != null && br != null) {
                     br.close();
                     isr.close();
-                    osw.close();
+                    fis.close();
                 }
+            } catch (IOException e) {
+                Toast.makeText(contexto.getApplicationContext(), "RETOCAAAAAAAAAAAAAAAAAAR", Toast.LENGTH_SHORT).show();
             }
-            catch (IOException e) { Toast.makeText(contexto.getApplicationContext(), "RETOCAAAAAAAAAAAAAAAAAAR", Toast.LENGTH_SHORT).show();}
         }
     }
+
 
 
     // -- PETICIÓN DE PERSMISOS -- //

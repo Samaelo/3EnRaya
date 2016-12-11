@@ -16,13 +16,13 @@ import java.util.ArrayList;
 public class Partida implements Serializable{
 
     private final int[][] SOLUCIONES_POSIBLES = {{1,2,3},{4,5,6},{7,8,9},{1,4,7},{2,5,8},{3,6,9},{1,5,9},{3,5,7}};
+
+
     private ArrayList<Jugador> jugadores;
     private ArrayList<Boton> botones_pulsados;
     private int total_botones_pulsados=0;
     private boolean resultado;
     private Jugador jugador_actual;
-
-
 
     /**
      * Método constructor de la clase Partida que recibe la lista de jugadores que participarán en
@@ -126,9 +126,12 @@ public class Partida implements Serializable{
         }
     }
 
-
     public Jugador getJugador_actual() {
         return jugador_actual;
+    }
+
+    public ArrayList<Jugador> getJugadores() {
+        return jugadores;
     }
 
     public boolean getResultado() {
