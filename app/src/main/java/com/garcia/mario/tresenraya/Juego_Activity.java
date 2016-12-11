@@ -1,5 +1,7 @@
 package com.garcia.mario.tresenraya;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -146,5 +148,39 @@ public class Juego_Activity extends AppCompatActivity {
         else{
             Toast.makeText(getApplicationContext(), mensaje_trampa, Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void volver(View v){
+        finish();
+        Intent intent = new Intent(this, Configuracion_Activity.class);
+        startActivity(intent);
+    }
+
+    public void finalizarPrograma(View v){
+
+        //Mostrar un mensaje de confirmación antes de realizar el test
+        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(this);
+        alertDialog.setMessage("¿Está seguro que desea abandonar la aplicación?");
+        alertDialog.setTitle("Salir");
+        alertDialog.setIcon(android.R.drawable.ic_dialog_alert);
+        alertDialog.setCancelable(false);
+        alertDialog.setPositiveButton("Sí", new DialogInterface.OnClickListener()
+
+        {
+            public void onClick(DialogInterface dialog, int which)
+            {
+                //código Java si se ha pulsado sí
+                System.exit(0);
+            }
+        });
+
+        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener()
+        {
+            public void onClick(DialogInterface dialog, int which)
+            {
+                //código java si se ha pulsado no
+            }
+        });
+        alertDialog.show();
     }
 }

@@ -29,7 +29,7 @@
         android:layout_above="@+id/iniciar"
         android:layout_alignStart="@+id/iniciar"
         android:layout_alignEnd="@+id/iniciar"
-        android:onClick="irHaJugar"/>
+        android:onClick="jugar"/>
 
 </RelativeLayout>
 

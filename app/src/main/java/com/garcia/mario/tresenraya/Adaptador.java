@@ -16,7 +16,6 @@ class Adaptador extends ArrayAdapter<String> {
     public Adaptador(Context context, List partidas_ganadas) {
         super(context, 0, partidas_ganadas);
         this.partidas_ganadas = partidas_ganadas;
-
     }
 
     @Override
@@ -43,7 +42,8 @@ class Adaptador extends ArrayAdapter<String> {
             vista.setTag(view_holder);
 
 
-        }else{
+        }
+        else{
             //Si ya se ha creado este item, recogemos la referencia guardada para no inflar/crear
             // uno nuevo.
             vista = item;
@@ -55,21 +55,12 @@ class Adaptador extends ArrayAdapter<String> {
         return vista;
     }
 
-
-
-
     class ViewHolder{
         private TextView txt;
 
         public void setTxt(TextView txt) {
             this.txt = txt;
         }
-
-
-
-
-
-
     }
 
 }

@@ -34,17 +34,14 @@ public class MenuPrincipal_Activity extends AppCompatActivity {
     }
 
     public void mostrarGanadores(View v){
-
+        finish();
         Intent intent = new Intent(this, CuadroHonor_Activity.class);
         startActivity(intent);
-
-
     }
 
-    public void irHaJugar(View v){
-
+    public void jugar(View v){
+        finish();
         Intent intent = new Intent(this, Configuracion_Activity.class);
         startActivity(intent);
-
     }
 }

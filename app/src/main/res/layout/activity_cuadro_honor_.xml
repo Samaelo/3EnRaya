@@ -13,15 +13,31 @@
     <ListView
         android:id="@+id/listView_CuadroHonor"
         android:layout_width="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_height="350dp" />
+        android:layout_height="350dp"
+        android:layout_above="@+id/btn_Volver"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:text="@string/btnVolver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btn_Volver"
-        android:layout_marginBottom="37dp"
+        android:layout_marginBottom="13dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="volver"/>
+
+    <TextView
+        android:text="@string/listaGanadores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="22dp"
+        android:id="@+id/textView"
+        android:fontFamily="sans-serif"
+        android:textSize="30sp"
+        android:textStyle="normal|bold|italic"
+        android:textAllCaps="false" />
 </RelativeLayout>

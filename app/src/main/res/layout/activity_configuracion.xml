@@ -74,15 +74,6 @@
             android:onClick="on_radiobutton_pulsado"/>
     </RadioGroup>
 
-    <Button
-        android:text="@string/btnJugar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btnJugar"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="on_btnJugar_pulsado"/>
-
 
     <RadioGroup
         android:layout_width="wrap_content"
@@ -141,6 +132,24 @@
         tools:ignore="HardcodedText"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/eTxtJugador1" />
+
+    <Button
+        android:text="@string/btnJugar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        android:onClick="on_btnJugar_pulsado"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/txtJugador2" />
+
+    <Button
+        android:text="@string/btnVolver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnVolver"
+        android:onClick="volver"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/rgJugador2" />
 
 
 </RelativeLayout>
