@@ -1,5 +1,6 @@
 package com.garcia.mario.tresenraya;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -70,7 +71,7 @@ public class JuegoActivity extends AppCompatActivity {
                 pulsar_boton(9, btn);
                 break;
         }
-        btn.setEnabled(false);
+
     }
 
     public void pasarTurno(){
@@ -101,19 +102,36 @@ public class JuegoActivity extends AppCompatActivity {
         return partida.comprobarSolucion();
     }
 
+    public void finalizar_partida(int resultado){
+        partida.finalizar(resultado);
+
+      //  Intent intent = new Intent();
+        //intent.putExtra("PARTIDA",partida);
+        setResult(resultado);
+        super.finish();
+
+
+    }
+    @Override
+    public void onBackPressed() {
+
+    }
     public void pulsar_boton(int idBoton, Button boton){
 
-        ponerNombreJugador(boton);
-
-        int resultado = partida.pulsar_boton(new Boton(getBaseContext(),idBoton));
-
-        if(resultado ==1){
-            pasarTurno();
-        }else if(resultado == 0){
-            Toast.makeText(this,"Victoria!",Toast.LENGTH_LONG).show();
+        String mensaje_trampa = String.format(getResources().getString(R.string.toastTrampa));
+        if( boton.getText().toString().trim().equals("")){
+            ponerNombreJugador(boton);
+            int resultado = partida.pulsar_boton(new Boton(getBaseContext(),idBoton));
+            if(resultado ==1){
+                pasarTurno();
+            }else{
+                finalizar_partida(resultado);
+            }
         }else{
-            Toast.makeText(this,"Empate!",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), mensaje_trampa, Toast.LENGTH_SHORT).show();
         }
+
+
 
 
     }

@@ -19,9 +19,7 @@ public class Partida implements Serializable{
     private ArrayList<Jugador> jugadores;
     private ArrayList<Boton> botones_pulsados;
     private int total_botones_pulsados=0;
-    private final String VICTORIA = "VICTORIA";
-    private final String EMPATE = "EMPATE";
-    private String resultado;
+    private boolean resultado;
     private Jugador jugador_actual;
 
 
@@ -121,11 +119,19 @@ public class Partida implements Serializable{
     }
 
     public void finalizar(int codResultado){
-
+        if(codResultado==0){
+            resultado = true;
+        }else{
+            resultado = false;
+        }
     }
 
 
     public Jugador getJugador_actual() {
         return jugador_actual;
+    }
+
+    public boolean getResultado() {
+        return resultado;
     }
 }

@@ -1,5 +1,6 @@
 package com.garcia.mario.tresenraya;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -68,10 +69,31 @@ public class MainActivity extends AppCompatActivity {
 
             intent = new Intent(getApplicationContext(),JuegoActivity.class);
             intent.putExtra("PARTIDA",p);
-            startActivity(intent);
+            startActivityForResult(intent,1);
         }
         else{
             Toast.makeText(this,mensaje,Toast.LENGTH_LONG).show();
+        }
+
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+
+        Partida partida = (Partida) data.getExtras().getSerializable("PARTIDA");
+        String mensaje_victoria;
+        String mensaje_empate;
+        if(requestCode==1){
+            if (resultCode == 0){
+
+                mensaje_victoria = String.format(getResources().getString(R.string.toastVictoria), partida.getJugador_actual().getNombre());
+                Toast.makeText(this,mensaje_victoria,Toast.LENGTH_LONG).show();
+            }else{
+
+                mensaje_empate = String.format(getResources().getString(R.string.toastEmpate));
+                Toast.makeText(this,mensaje_empate,Toast.LENGTH_LONG).show();
+
+            }
         }
 
     }
