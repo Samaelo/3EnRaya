@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_preferencias_"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.garcia.mario.tresenraya.Preferencias_Activity">
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtIdioma"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtIdioma"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="15dp"
+        android:id="@+id/radiogroup_Idiomas" >
+
+        <RadioButton
+            android:text="Deutsch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rbAleman"
+            android:layout_below="@+id/rbEnglish"
+            android:layout_alignStart="@+id/radiogroup_Idiomas" />
+
+        <RadioButton
+            android:text="Swahili"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rbSwahili"
+            android:layout_below="@+id/rbAleman"
+            android:layout_alignStart="@+id/rbAleman" />
+
+        <RadioButton
+            android:text="English"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rbEnglish"
+            android:layout_below="@+id/rbSpanish"
+            android:layout_alignEnd="@+id/rbSwahili" />
+
+        <RadioButton
+            android:text="Español"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rbSpanish"
+            android:layout_below="@+id/radiogroup_Idiomas"
+            android:layout_alignEnd="@+id/rbAleman" />
+    </RadioGroup>
+
+
+</RelativeLayout>

@@ -151,9 +151,10 @@ public class Juego_Activity extends AppCompatActivity {
     }
 
     public void volver(View v){
+        setResult(3);
         finish();
-        Intent intent = new Intent(this, Configuracion_Activity.class);
-        startActivity(intent);
+
+
     }
 
     public void finalizarPrograma(View v){
@@ -169,7 +170,9 @@ public class Juego_Activity extends AppCompatActivity {
         {
             public void onClick(DialogInterface dialog, int which)
             {
-                //código Java si se ha pulsado sí
+
+                //Finalizamos la ejecución de la actividad y del resto de ellas de la aplicación.
+                finishAffinity();
                 System.exit(0);
             }
         });

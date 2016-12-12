@@ -15,22 +15,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/eTxtJugador1"
-        android:layout_marginStart="25dp"
-        android:layout_below="@+id/txtJugador1"
-        android:layout_alignParentStart="true"
-        tools:ignore="LabelFor" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
+        android:ems="6"
         android:id="@+id/eTxtJugador2"
         android:layout_below="@+id/txtJugador2"
         android:layout_alignStart="@+id/txtJugador2"
-        tools:ignore="LabelFor" />
+        tools:ignore="LabelFor"
+        android:maxLength="7" />
 
     <RadioGroup
         android:layout_width="wrap_content"
@@ -150,6 +140,19 @@
         android:onClick="volver"
         android:layout_alignParentBottom="true"
         android:layout_alignStart="@+id/rgJugador2" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:id="@+id/eTxtJugador1"
+        android:layout_marginStart="25dp"
+        tools:ignore="LabelFor"
+        android:maxLength="7"
+        android:minWidth="7dp"
+        android:ems="6"
+        android:layout_below="@+id/txtJugador1"
+        android:layout_alignParentStart="true" />
 
 
 </RelativeLayout>

@@ -22,7 +22,8 @@
         </activity>
         <activity android:name=".Juego_Activity" />
         <activity android:name=".CuadroHonor_Activity" />
-        <activity android:name=".Configuracion_Activity"></activity>
+        <activity android:name=".Configuracion_Activity" />
+        <activity android:name=".Preferencias_Activity"></activity>
     </application>
 
 </manifest>

@@ -64,6 +64,14 @@ public class Configuracion_Activity extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        finish();
+        Intent intent = new Intent(this, MenuPrincipal_Activity.class);
+        startActivity(intent);
+    }
+
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
 

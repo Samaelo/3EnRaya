@@ -25,6 +25,14 @@ public class CuadroHonor_Activity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+        Intent intent = new Intent(this, MenuPrincipal_Activity.class);
+
+        startActivity(intent);
+    }
+
     public void crearListView(){
 
         AccesoFicheros af;
@@ -34,7 +42,7 @@ public class CuadroHonor_Activity extends AppCompatActivity {
         partidas  = af.leerDatosDeFichero();
         adaptador = new Adaptador(this, partidas);
 
-        listView = (ListView)findViewById(R.id.listView_CuadroHonor);
+        listView = (ListView) findViewById(R.id.listView_CuadroHonor);
 
         listView.setAdapter(adaptador);
     }

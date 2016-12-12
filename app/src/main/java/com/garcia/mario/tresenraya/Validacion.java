@@ -8,7 +8,7 @@ public class Validacion {
 
     public Validacion(){}
 
-    private String listaExclusion = "ºª\\!|@·#€~~$%&¬/()='?¡¿`^[*+]}¨´{_*:.;,<>";
+    private String listaExclusion = "ºª\\\"!|@·#€~~$%&¬/()='?¡¿`^[*+]}¨´{_*:.;,<>";
     private int codigoError = 0;
 
     public int validarNombreJugador(String nombre1, String nombre2){
@@ -22,7 +22,7 @@ public class Validacion {
             if(nombres[i].trim().equals("") )
                 return 1; // Ningún nombre en blanco
 
-            else if(nombre1.trim().equals(nombre2.trim()))
+            else if(nombre1.trim().toUpperCase().equals(nombre2.trim().toUpperCase()))
                 return 2; // Nombres iguales
 
             else {

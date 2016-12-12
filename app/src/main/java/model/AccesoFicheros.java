@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
-import android.widget.Toast;
+
 
 
 import com.garcia.mario.tresenraya.R;
@@ -102,7 +102,7 @@ public class AccesoFicheros {
 
                 String resultado_partida = "Partida: " + versus + ". Ganador: " + ganador;
                 partidas_ganadas.add(resultado_partida);
-                Toast.makeText(contexto.getApplicationContext(), resultado_partida, Toast.LENGTH_SHORT).show();
+
 
             }
         }
@@ -117,7 +117,7 @@ public class AccesoFicheros {
                     fis.close();
                 }
             } catch (IOException e) {
-                Toast.makeText(contexto.getApplicationContext(), "RETOCAAAAAAAAAAAAAAAAAAR", Toast.LENGTH_SHORT).show();
+
             }
         }
         return partidas_ganadas;
