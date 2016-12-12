@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 
@@ -121,6 +122,19 @@ public class AccesoFicheros {
             }
         }
         return partidas_ganadas;
+    }
+
+    // -- COMPROBAMOS EL ESTADO DE LA TARJETA SD -- //
+
+    public boolean comprobarTarjetaSD(){
+
+        //Comprobamos el estado de la memoria externa (tarjeta SD)
+        String estado = Environment.getExternalStorageState();
+
+        if (estado.equals(Environment.MEDIA_MOUNTED)){
+            return true;
+        }
+        return false;
     }
 
     // -- PETICIÓN DE PERSMISOS -- //

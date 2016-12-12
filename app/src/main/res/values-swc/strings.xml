@@ -15,4 +15,10 @@
     <string name="app_name">Noughts na misalaba</string>
     <string name="partidaGuardada">" %1$s vs %2$s,%3$s"</string>
     <string name="listaGanadores">Orodha ya washindi</string>
+    <string name="preferencias">Mapendekezo</string>
+    <string name="textoAlmacenamiento">Kuhifadhi</string>
+    <string name="textoExterno">Uhifadhi wa nje</string>
+    <string name="textoIdiomas">Lugha</string>
+    <string name="textoInterno">Hifadhi ya ndani</string>
+    <string name="guardarPreferencias">Hifadhi mapendeleo</string>
 </resources>

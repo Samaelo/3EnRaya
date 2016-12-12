@@ -14,22 +14,33 @@
         android:text="ListaGanadores"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="59dp"
-        android:id="@+id/iniciar"
+        android:layout_marginBottom="33dp"
+        android:id="@+id/btn_ListarGanadores"
+        android:onClick="mostrarGanadores"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="mostrarGanadores"/>
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Preferencias"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:id="@+id/btn_Preferencias"
+        android:onClick="irAPreferencias"
+        android:layout_above="@+id/btn_ListarGanadores"
+        android:layout_alignStart="@+id/btn_ListarGanadores"
+        android:layout_alignEnd="@+id/btn_ListarGanadores" />
 
     <Button
         android:text="JUgar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:id="@+id/jugar"
-        android:layout_above="@+id/iniciar"
-        android:layout_alignStart="@+id/iniciar"
-        android:layout_alignEnd="@+id/iniciar"
-        android:onClick="jugar"/>
+        android:layout_marginBottom="17dp"
+        android:id="@+id/btn_Jugar"
+        android:onClick="jugar"
+        android:layout_above="@+id/btn_Preferencias"
+        android:layout_alignStart="@+id/btn_Preferencias"
+        android:layout_alignEnd="@+id/btn_Preferencias" />
 
 </RelativeLayout>
 

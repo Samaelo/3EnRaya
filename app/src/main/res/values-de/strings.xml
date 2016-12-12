@@ -15,4 +15,10 @@
     <string name="toastEmpate">Zeichnen!</string>
     <string name="listaGanadores">Liste der Gewinner</string>
     <string name="partidaGuardada">" %1$s vs %2$s,%3$s"</string>
+    <string name="preferencias">Vorlieben</string>
+    <string name="textoAlmacenamiento">Lagerung</string>
+    <string name="textoInterno">Internen Speicher</string>
+    <string name="textoExterno">Externe Speicher</string>
+    <string name="textoIdiomas">Sprache</string>
+    <string name="guardarPreferencias">Einstellungen speichern</string>
 </resources>

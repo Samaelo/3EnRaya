@@ -1,6 +1,7 @@
 package com.garcia.mario.tresenraya;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +28,8 @@ public class Configuracion_Activity extends AppCompatActivity {
     final String COLOR_VERDE = "#097054";
     final String COLOR_AZUL = "#00628B";
 
+    String jugador1;
+    String jugador2;
     Button btnCrear;
     AccesoFicheros af = null;
 
@@ -35,8 +38,28 @@ public class Configuracion_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuracion);
         cargar_componentes();
-
     }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState){
+        jugador1 = eTxtJugador1.getText().toString();
+        jugador2 = eTxtJugador2.getText().toString();
+        super.onSaveInstanceState(outState);
+        outState.putString("nombreJ1", jugador1);
+        outState.putString("nombreJ2", jugador2);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState){
+        jugador1 = eTxtJugador1.getText().toString();
+        jugador2 = eTxtJugador2.getText().toString();
+        super.onRestoreInstanceState(savedInstanceState);
+        jugador1 = savedInstanceState.getString("nombreJ1");
+        jugador2 = savedInstanceState.getString("nombreJ2");
+        eTxtJugador1.setText(String.valueOf(jugador1));
+        eTxtJugador2.setText(String.valueOf(jugador2));
+    }
+
 
     public void on_btnJugar_pulsado(View v){
 
@@ -91,7 +114,14 @@ public class Configuracion_Activity extends AppCompatActivity {
                 Toast.makeText(this,mensaje_empate,Toast.LENGTH_LONG).show();
 
             }else if (resultCode == 3){
+                finish();
                 Toast.makeText(this,"Partida finalizada.",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, MenuPrincipal_Activity.class);
+                startActivity(intent);
+            }
+            else if(resultCode == 4){
+                finishAffinity();
+                System.exit(0);
             }
         }
     }
@@ -152,26 +182,38 @@ public class Configuracion_Activity extends AppCompatActivity {
             case id_rbNaranjaJugador1:
                 activar_radiobuttons_jugador2();
                 rbNaranjaJugador2.setEnabled(false);
+                rbNaranjaJugador2.setTextColor(Color.GRAY);
+                rbNaranjaJugador1.setTextColor(Color.parseColor(COLOR_NARANJA));
                 break;
             case id_rbNaranjaJugador2:
                 activar_radiobuttons_jugador1();
                 rbNaranjaJugador1.setEnabled(false);
+                rbNaranjaJugador1.setTextColor(Color.GRAY);
+                rbNaranjaJugador2.setTextColor(Color.parseColor(COLOR_NARANJA));
                 break;
             case id_rbVerdeJugador1:
                 activar_radiobuttons_jugador2();
                 rbVerdeJugador2.setEnabled(false);
+                rbVerdeJugador2.setTextColor(Color.GRAY);
+                rbNaranjaJugador1.setTextColor(Color.parseColor(COLOR_VERDE));
                 break;
             case id_rbVerdeJugador2:
                 activar_radiobuttons_jugador1();
                 rbVerdeJugador1.setEnabled(false);
+                rbVerdeJugador1.setTextColor(Color.GRAY);
+                rbNaranjaJugador2.setTextColor(Color.parseColor(COLOR_VERDE));
                 break;
             case id_rbAzulJugador1:
                 activar_radiobuttons_jugador2();
                 rbAzulJugador2.setEnabled(false);
+                rbAzulJugador2.setTextColor(Color.GRAY);
+                rbNaranjaJugador1.setTextColor(Color.parseColor(COLOR_AZUL));
                 break;
             case id_rbAzulJugador2:
                 activar_radiobuttons_jugador1();
                 rbAzulJugador1.setEnabled(false);
+                rbAzulJugador1.setTextColor(Color.GRAY);
+                rbNaranjaJugador2.setTextColor(Color.parseColor(COLOR_AZUL));
                 break;
         }
     }
@@ -185,6 +227,9 @@ public class Configuracion_Activity extends AppCompatActivity {
         rbAzulJugador2 = (RadioButton) findViewById(id_rbAzulJugador2);
         eTxtJugador1 = (EditText) findViewById(R.id.eTxtJugador1);
         eTxtJugador2 = (EditText) findViewById(R.id.eTxtJugador2);
+        eTxtJugador1.requestFocus();
+
+
     }
 
     public void activar_radiobuttons_jugador1(){

@@ -3,4 +3,7 @@
     <color name="colorPrimary">#007AAF</color>
     <color name="colorPrimaryDark">#00628b</color>
     <color name="colorAccent">#097054</color>
+    <color name="naranja">#ff9900</color>
+    <color name="verde">#097054</color>
+    <color name="azul">#00628b</color>
 </resources>

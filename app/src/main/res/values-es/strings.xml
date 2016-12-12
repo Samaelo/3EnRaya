@@ -15,4 +15,10 @@
     <string name="toastEmpate">¡Empate!</string>
     <string name="listaGanadores">Lista de Ganadores</string>
     <string name="partidaGuardada">" %1$s vs %2$s,%3$s"</string>
+    <string name="preferencias">Preferencias</string>
+    <string name="textoAlmacenamiento">Almacenamiento</string>
+    <string name="textoExterno">Almacenamiento Externo (Tarjeta SD)</string>
+    <string name="textoIdiomas">Lenguaje</string>
+    <string name="textoInterno">Almacenamiento Interno</string>
+    <string name="guardarPreferencias">Guardar Preferencias</string>
 </resources>

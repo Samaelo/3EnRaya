@@ -28,6 +28,12 @@ public class MenuPrincipal_Activity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void irAPreferencias(View v){
+        finish();
+        Intent intent = new Intent(this, Preferencias_Activity.class);
+        startActivity(intent);
+    }
+
     public void jugar(View v){
         finish();
         Intent intent = new Intent(this, Configuracion_Activity.class);

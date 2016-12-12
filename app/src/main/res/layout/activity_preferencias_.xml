@@ -10,22 +10,46 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.garcia.mario.tresenraya.Preferencias_Activity">
 
-    <TextView
-        android:text="TextView"
+    <Button
+        android:text="@string/guardarPreferencias"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/txtIdioma"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/radiogroup_Idiomas"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="37dp"
+        android:id="@+id/btn_guardarPreferencias"
+        android:onClick="guardarPreferencias"/>
+
+    <TextView
+        android:text="@string/preferencias"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtPreferencias"
+        android:fontFamily="sans-serif"
+        android:textSize="30sp"
+        android:textStyle="normal|bold|italic"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignStart="@+id/radiogroup_Idiomas" />
+
+    <TextView
+        android:text="@string/textoIdiomas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/txtPreferencias"
+        android:layout_alignStart="@+id/txtPreferencias"
+        android:layout_marginTop="11dp"
+        android:textSize="18sp" />
 
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txtIdioma"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="15dp"
-        android:id="@+id/radiogroup_Idiomas" >
+        android:layout_marginStart="12dp"
+        android:id="@+id/radiogroup_Idiomas"
+        android:layout_marginTop="12dp"
+        android:layout_below="@+id/texto_Idioma"
+        android:layout_alignParentStart="true">
 
         <RadioButton
             android:text="Deutsch"
@@ -59,6 +83,54 @@
             android:layout_below="@+id/radiogroup_Idiomas"
             android:layout_alignEnd="@+id/rbAleman" />
     </RadioGroup>
+
+    <TextView
+        android:text="@string/textoAlmacenamiento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/texto_Almacenamiento"
+        android:textSize="18sp"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/cb_Externa" />
+
+    <TextView
+        android:text="@string/nombreFichero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/texto_Idioma"
+        android:textSize="18sp"
+        android:layout_alignBaseline="@+id/textView4"
+        android:layout_alignBottom="@+id/textView4"
+        android:layout_toEndOf="@+id/cb_Interna" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_alignTop="@+id/radiogroup_Idiomas"
+        android:layout_alignStart="@+id/texto_Idioma"
+        android:id="@+id/eT_nombreFichero" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb_Externa"
+        android:text="@string/textoExterno"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/texto_Almacenamiento"
+        android:layout_alignParentStart="true"
+        android:onClick="cambiarCheckBox"/>
+
+    <CheckBox
+        android:text="@string/textoInterno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cb_Interna"
+        android:layout_below="@+id/cb_Externa"
+        android:layout_alignParentStart="true"
+        android:onClick="cambiarCheckBox"
+        android:checked="true"/>
 
 
 </RelativeLayout>

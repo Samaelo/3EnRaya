@@ -14,4 +14,11 @@
     <string name="toastVictoria"> The winner is %1$s!</string>
     <string name="partidaGuardada"> %1$s vs %2$s,%3$s</string>
     <string name="listaGanadores">List of Winners</string>
+    <string name="textoIdiomas">Language</string>
+    <string name="textoAlmacenamiento">Storage</string>
+    <string name="preferencias">Preferences</string>
+    <string name="textoInterno">Internal Storage</string>
+    <string name="textoExterno">External Storage(SD Card)</string>
+    <string name="guardarPreferencias">Save Preferences</string>
+    <string name="nombreFichero">Name of file to save</string>
 </resources>

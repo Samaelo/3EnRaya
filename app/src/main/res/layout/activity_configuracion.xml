@@ -11,77 +11,45 @@
     tools:context="com.garcia.mario.tresenraya.Configuracion_Activity">
 
 
-    <EditText
+    <TextView
+        android:text="@string/txtJugador1"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtJugador1"
+        tools:ignore="HardcodedText"
+        android:layout_width="250dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="@string/btnJugar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="6"
-        android:id="@+id/eTxtJugador2"
-        android:layout_below="@+id/txtJugador2"
-        android:layout_alignStart="@+id/txtJugador2"
-        tools:ignore="LabelFor"
-        android:maxLength="7" />
-
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/rgJugador2"
-        android:layout_below="@+id/eTxtJugador2"
-        android:layout_alignStart="@+id/eTxtJugador2">
-
-        <RadioButton
-            android:text="@string/rbNaranja"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/eTxtJugador2"
-            android:layout_marginTop="24dp"
-            android:id="@+id/rbNaranjaJugador2"
-            tools:ignore="ObsoleteLayoutParam"
-            android:onClick="on_radiobutton_pulsado"
-            android:enabled="false" />
-
-        <RadioButton
-            android:text="@string/rbVerde"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/rbNaranjaJugador2"
-            android:layout_alignStart="@+id/rbNaranjaJugador2"
-            android:layout_marginTop="14dp"
-            android:id="@+id/rbVerdeJugador2"
-            tools:ignore="ObsoleteLayoutParam"
-            android:onClick="on_radiobutton_pulsado"
-            android:checked="true" />
-
-        <RadioButton
-            android:text="@string/rbAzul"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/rbVerdeJugador2"
-            android:layout_alignStart="@+id/rbVerdeJugador2"
-            android:layout_marginTop="11dp"
-            android:id="@+id/rbAzulJugador2"
-            tools:ignore="ObsoleteLayoutParam"
-            android:onClick="on_radiobutton_pulsado"/>
-    </RadioGroup>
-
+        android:id="@+id/button"
+        android:onClick="on_btnJugar_pulsado"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
 
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/rgJugador1"
-        android:layout_below="@+id/eTxtJugador1"
+        android:layout_alignTop="@+id/eTxtJugador1"
         android:layout_alignStart="@+id/eTxtJugador1">
+
 
         <RadioButton
             android:text="@string/rbNaranja"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/eTxtJugador1"
             android:id="@+id/rbNaranjaJugador1"
             tools:ignore="ObsoleteLayoutParam"
             android:onClick="on_radiobutton_pulsado"
-            android:checked="true" />
-
+            android:checked="true"
+            android:buttonTint="@color/naranja"
+            android:textColor="@color/naranja"
+            android:layout_marginTop="47dp"
+            android:layout_below="@+id/eTxtJugador2"
+            android:layout_toEndOf="@+id/btnVolver" />
 
         <RadioButton
             android:text="@string/rbVerde"
@@ -93,7 +61,9 @@
             android:id="@+id/rbVerdeJugador1"
             tools:ignore="ObsoleteLayoutParam"
             android:onClick="on_radiobutton_pulsado"
-            android:enabled="false" />
+            android:enabled="false"
+            android:buttonTint="@color/verde"
+            android:textColor="@color/verde"/>
 
         <RadioButton
             android:text="@string/rbAzul"
@@ -101,36 +71,23 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:id="@+id/rbAzulJugador1"
-            android:onClick="on_radiobutton_pulsado"/>
+            android:onClick="on_radiobutton_pulsado"
+            android:buttonTint="@color/azul"
+            android:textColor="@color/azul"/>
     </RadioGroup>
 
-    <TextView
-        android:text="@string/txtJugador2"
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
-        android:id="@+id/txtJugador2"
-        tools:ignore="HardcodedText"
-        android:layout_below="@+id/rgJugador1"
-        android:layout_alignStart="@+id/rgJugador1" />
-
-    <TextView
-        android:text="@string/txtJugador1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtJugador1"
-        tools:ignore="HardcodedText"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/eTxtJugador1" />
-
-    <Button
-        android:text="@string/btnJugar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button"
-        android:onClick="on_btnJugar_pulsado"
-        android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/txtJugador2" />
+        android:inputType="textPersonName"
+        android:id="@+id/eTxtJugador1"
+        android:layout_marginStart="19dp"
+        tools:ignore="LabelFor"
+        android:maxLength="7"
+        android:minWidth="7dp"
+        android:ems="6"
+        android:layout_below="@+id/txtJugador1"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:text="@string/btnVolver"
@@ -139,20 +96,76 @@
         android:id="@+id/btnVolver"
         android:onClick="volver"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/rgJugador2" />
+        android:layout_toEndOf="@+id/eTxtJugador1" />
+
+    <TextView
+        android:text="@string/txtJugador2"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtJugador2"
+        tools:ignore="HardcodedText"
+        android:layout_below="@+id/rgJugador1"
+        android:layout_alignStart="@+id/rgJugador1" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rgJugador2"
+        android:layout_above="@+id/btnVolver"
+        android:layout_alignStart="@+id/txtJugador2"
+        android:layout_marginBottom="11dp">
+
+        <RadioButton
+            android:text="@string/rbNaranja"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/eTxtJugador2"
+            android:layout_marginTop="24dp"
+            android:id="@+id/rbNaranjaJugador2"
+            tools:ignore="ObsoleteLayoutParam"
+            android:onClick="on_radiobutton_pulsado"
+            android:enabled="false"
+            android:buttonTint="@color/naranja"
+            android:textColor="@color/naranja"/>
+
+        <RadioButton
+            android:text="@string/rbVerde"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rbNaranjaJugador2"
+            android:layout_alignStart="@+id/rbNaranjaJugador2"
+            android:layout_marginTop="14dp"
+            android:id="@+id/rbVerdeJugador2"
+            tools:ignore="ObsoleteLayoutParam"
+            android:onClick="on_radiobutton_pulsado"
+            android:checked="true"
+            android:buttonTint="@color/verde"
+            android:textColor="@color/verde"/>
+
+        <RadioButton
+            android:text="@string/rbAzul"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:layout_below="@+id/rbVerdeJugador2"
+            android:layout_alignStart="@+id/rbVerdeJugador2"
+            android:layout_marginTop="11dp"
+            android:id="@+id/rbAzulJugador2"
+            tools:ignore="ObsoleteLayoutParam"
+            android:onClick="on_radiobutton_pulsado"
+            android:buttonTint="@color/azul"
+            android:textColor="@color/azul"/>
+    </RadioGroup>
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:id="@+id/eTxtJugador1"
-        android:layout_marginStart="25dp"
+        android:ems="6"
+        android:id="@+id/eTxtJugador2"
         tools:ignore="LabelFor"
         android:maxLength="7"
-        android:minWidth="7dp"
-        android:ems="6"
-        android:layout_below="@+id/txtJugador1"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/txtJugador2"
+        android:layout_alignStart="@+id/rgJugador2" />
 
 
 </RelativeLayout>

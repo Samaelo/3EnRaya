@@ -132,7 +132,7 @@ public class Juego_Activity extends AppCompatActivity {
 
     public void pulsar_boton(int idBoton, Button boton){
 
-        String mensaje_trampa = String.format(getResources().getString(R.string.toastTrampa));
+        String mensaje_trampa;
 
         if( boton.getText().toString().trim().equals("")){
             ponerNombreJugador(boton);
@@ -146,6 +146,7 @@ public class Juego_Activity extends AppCompatActivity {
             }
         }
         else{
+            mensaje_trampa = String.format(getResources().getString(R.string.toastTrampa));
             Toast.makeText(getApplicationContext(), mensaje_trampa, Toast.LENGTH_SHORT).show();
         }
     }
@@ -153,8 +154,6 @@ public class Juego_Activity extends AppCompatActivity {
     public void volver(View v){
         setResult(3);
         finish();
-
-
     }
 
     public void finalizarPrograma(View v){
@@ -172,8 +171,8 @@ public class Juego_Activity extends AppCompatActivity {
             {
 
                 //Finalizamos la ejecución de la actividad y del resto de ellas de la aplicación.
-                finishAffinity();
-                System.exit(0);
+                setResult(4);
+                finish();
             }
         });
 
