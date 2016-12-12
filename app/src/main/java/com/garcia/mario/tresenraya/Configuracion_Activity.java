@@ -15,24 +15,35 @@ import model.AccesoFicheros;
 import model.Jugador;
 import model.Partida;
 
-
+/**
+ * Esta clase hace referencia a la pantalla de configuración, en la que los jugadores van a establecer sus nombres y los colores con los cuales desea jugar cada uno,
+ * antes de comenzar a jugar una partida.
+ */
 public class Configuracion_Activity extends AppCompatActivity {
 
-    RadioButton rbNaranjaJugador1, rbNaranjaJugador2, rbVerdeJugador1, rbVerdeJugador2,
-            rbAzulJugador1, rbAzulJugador2;
-    EditText eTxtJugador1,eTxtJugador2;
+    // Elementos RadioButton que hace referencia a la elección de los colores de cada jugador
+    RadioButton rbNaranjaJugador1,rbAzulJugador1,rbVerdeJugador1,rbNaranjaJugador2, rbVerdeJugador2, rbAzulJugador2;
+    EditText eTxtJugador1,eTxtJugador2; // Textos en los cuales los jugadores introducen sus nombres
 
-    final int id_rbNaranjaJugador1 = R.id.rbNaranjaJugador1, id_rbNaranjaJugador2 = R.id.rbNaranjaJugador2, id_rbVerdeJugador1 = R.id.rbVerdeJugador1, id_rbVerdeJugador2 = R.id.rbVerdeJugador2, id_rbAzulJugador1 = R.id.rbAzulJugador1, id_rbAzulJugador2 = R.id.rbAzulJugador2;
+    // Variables de tipos enteros que recogen los valores de las id's de los Recursos que hacen referencia a los botones
+    final int id_rbNaranjaJugador1 = R.id.rbNaranjaJugador1, id_rbNaranjaJugador2 = R.id.rbNaranjaJugador2, id_rbVerdeJugador1 = R.id.rbVerdeJugador1, id_rbVerdeJugador2 = R.id.rbVerdeJugador2,
+              id_rbAzulJugador1 = R.id.rbAzulJugador1, id_rbAzulJugador2 = R.id.rbAzulJugador2;
 
+    // Constantes que hacen referencia a los colores naranja, verde y azul. Cada uno recoge su valor en hexadecimal
     final String COLOR_NARANJA = "#FF9900";
     final String COLOR_VERDE = "#097054";
     final String COLOR_AZUL = "#00628B";
 
-    String jugador1;
-    String jugador2;
-    Button btnCrear;
-    AccesoFicheros af = null;
+    String jugador1; // String donde recogemos el nombre del jugador 1
+    String jugador2; // String donde recogemos el nombre del jugador 2
 
+    /**
+     * Este mguardar el estado de la Activity antes de ser destruida con el super.onSaveInstanceState(outState) y luego le agregamos con el método putInt() para guardar la información que
+     * queremos, en este caso queremos guardar lo que valía la variable cont que estamos usando para el TextView. Este método pide como argumento una clave, la cual he llamado “CONT”, y el valor,
+     * que en este caso es cont.
+     *
+     * @param savedInstanceState Objeto de tipo Bundle donde guardamos el estado de nuestras variables su estado
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +51,15 @@ public class Configuracion_Activity extends AppCompatActivity {
         cargar_componentes();
     }
 
+    /**
+     * Este método guarda el estado de la Activity, es decir, el valor de las variables que contenía la actividad antes de girar la pantalla. Se realiza con el método super.onSaveInstanceState(outState)
+     * antes de que la Activity sea destruida y se guarda el valor de las variables con el método putString() para guardar la información que queremos. En este caso queremos guardar lo que valían
+     * las variables jugador1 y jugador2 que estamos usando en cada uno de los EditText que hacen referencia a los nombres de cada jugador.
+     * Este método con el cual guardamos el valor de las variables (putString()) pide como argumento una clave, que es de tipo String, el cual hace referencia al identificador de la variable
+     * que vamos a guardar y el valor de dicha clave, que será el nombre de la variable que queremos guardar.
+     *
+     * @param outState Variable de tipo Bundle que contiene el valor de todas las variables de la Activity
+     */
     @Override
     protected void onSaveInstanceState(Bundle outState){
         jugador1 = eTxtJugador1.getText().toString();
@@ -49,6 +69,12 @@ public class Configuracion_Activity extends AppCompatActivity {
         outState.putString("nombreJ2", jugador2);
     }
 
+    /**
+     * Este método recoge el estado de la Activity anterior de la cual queremos obtener el valor de las variables que hemos guardado. Se realiza con el método super.onRestoreInstanceState(saveInstanceState)
+     * a través del cual se restauran los datos de la Activity anterior. El método con el cual recogemos los datos de las variables es getString(), que recibe por parámetro un String que hace referencia
+     * al valor de la clave que hemos ajuntado a la variable en el método putString cuando guardamos los datos en el método onSaveInstanceState().
+     * @param savedInstanceState Variable de tipo Bundle que contiene el valor de todas las variables de la Activity
+     */
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState){
         jugador1 = eTxtJugador1.getText().toString();
@@ -60,7 +86,18 @@ public class Configuracion_Activity extends AppCompatActivity {
         eTxtJugador2.setText(String.valueOf(jugador2));
     }
 
-
+    /**
+     * Este método lanza la Actividad Juego_Activity. Para ello, primero comprueba la longitud del mensaje que se recibe a través del método validar_campos() (que recibe por parámetro el contenido de los
+     * EditText que hacen referencia a los nombres de los jugadores). Si la longitud del mensaje es menor que 3 ( se ha estimado así, ya que un mensaje de error debe tener una longitud superior a 3,
+     * pero podría haberse puesto otra condición, como por ejemplo que la longitud del mensaje fuese menor que 2 o 4...) significa que el método validar_campos() no ha devuelto ningún mensaje de error.
+     * Primero instanciamos un ArrayList de tipo Jugador denominado 'jugadores'. Después instanciamos un jugador que recibe en su constructor el contenido del EditText denominado 'eTxtJugador1' y un color
+     * que hace referencia al elemento RadioButton que haya elegido dicho jugador. Una vez creado, le asignamos el turno mediante el método asignarTurno() que recibe por parámetro un booleano, en este caso
+     * será true, ya que queremos que la partida empiece con el turno en el jugador 1. Posteriormente instanciamos un jugador 2 que recibe en su constructor el contenido del EditText denominado
+     * 'eTxtJugador2' y un color que hace referencia al elemento RadioButton que haya elegido al igual que sucedía con el jugador 1.
+     * Una vez creados los dos jugadores, los añadimos al ArrayList que hemos creado denominado 'jugadores'. Instanciamos una partida a la cual pasamos dicho ArrayList y mediante un Intent
+     * llamamos a la actividad 'Juego_Activity', en la cual pasamos la partida.
+     * @param v Objeto de la clase View que hace referencia a la vista donde se produce la llamada al método
+     */
     public void on_btnJugar_pulsado(View v){
 
         ArrayList<Jugador> jugadores;
@@ -86,6 +123,10 @@ public class Configuracion_Activity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Este método se produce cuando se pulsa el botón atrás del móvil. Primero se finaliza la Activity de la configuración (Configuracion_Activity) mediante el método finish() y posteriormente, mediante
+     * un intent que instanciamos, pasamos a Activity del menú principal (MenuPrincipal_Activity)
+     */
     @Override
     public void onBackPressed() {
         finish();
@@ -93,7 +134,21 @@ public class Configuracion_Activity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
+    /**
+     * Este método recoge los datos de la Actividad que ha sido llamada mediante el método startActivityForResult(). Dependiendo del código que se devuelva en la Activity que ha sido llamada,
+     * mediante el método resultSet(), que asigna un valor al requestCode que recibe esta Actividad, realiza una cosa u otra. Si el código del requestCode es 0, significa que hay un ganador, por lo tanto
+     * se recoge el valor del ganador mediante el método getExtras().getString("GANADOR") que contiene el nombre del ganador. Se crea una variable de tipo String denominada mensaje_victoria que hace
+     * referencia al String que tenemos almacenado en R denominado 'toastVictoria'. Por último mostramos el mensaje por pantalla en un Toast.
+     * Si el resultCode tiene valor 2, significa que se ha producido un empate. Se crea una variable de tipo String denominada mensaje_empate que hace referencia al String que tenemos almacenado
+     * en R denominado 'toastEmpate'. Posteriormente se muestra el mensaje a través de un Toast. Si el código del resultCode es 3, significa que se ha producido una salida hacia atrás de la partida
+     * sin que esta haya finalizado con un resultado(un ganador). Se procede a finalizar con la Actividad actual (Configuacion_Activity),
+     * se muestra un Toast con el String "La partida ha finalizado. No ha habido ningún ganador". Si por el contrario el valor del resultCode es 4, se procede a finalizar con todas las Actividades que
+     * estén sujetas a la Activity de configuración (Configuracion_Activity) y se sale del sistema.
+     *
+     * @param requestCode Variable de tipo int que hace referencia al código de la Actividad mediante la cual ha sido llamada la otra Actividad
+     * @param resultCode Variable de tipo int que hace referencia al resultado que se quiere enviar desde otra Activity cuando se produce un suceso concreto
+     * @param data Objeto de tipo Intent en el cual están almacenados los datos de la Activity que ha sido llamada mediante el método startActivityForResult()
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
@@ -115,7 +170,7 @@ public class Configuracion_Activity extends AppCompatActivity {
 
             }else if (resultCode == 3){
                 finish();
-                Toast.makeText(this,"Partida finalizada.",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"La partida ha finalizado. No ha habido ningún ganador",Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, MenuPrincipal_Activity.class);
                 startActivity(intent);
             }
@@ -126,12 +181,23 @@ public class Configuracion_Activity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Este método valida el contenido de los EditText que hacen refencia al nombre del Jugador 1 y Jugador 2 antes de acceder a la partida. Primero instanciamos un objeto de la clase Validacion denominado
+     * 'validacion'. Obtenemos un código de error, definido en la variable 'codigoError' que recoge el valor del método validarNombreJugador() de la clase Validacion, que recibe por parámetro los Strings
+     * de los nombres de los jugadores. Dependiendo del código de error que obtengamos, se produce una secuencia de acciones u otras.
+     * Si el valor del código de error es 1, significa que alguno de los EditText de los jugadores está en blanco (o los dos). Si el código de error es 1, significa que ambos nombres son iguales, es decir,
+     * el contenido de los valores de cada EditText, es el mismo. Si por el contrario, el código de error es 3, signfica que alguno de los nombres(o los dos) contienen caracteres no válidos.
+     *
+     * @param nombreJ1 Variable de tipo String que hace referencia al EditText del Jugador 1, que contiene el nombre del jugador 1
+     * @param nombreJ2 Variable de tipo String que hace referencia al EditText del Jugador 2, que contiene el nombre del jugador 2
+     * @return Retorna una variable de tipo String denominada 'mensaje' que contene el mensaje de error correspondiente al código de error
+     */
     public String validar_campos(String nombreJ1, String nombreJ2){
 
         String mensaje="";
-        Validacion validar = new Validacion();
+        Validacion validacion = new Validacion();
 
-        int codigoError = validar.validarNombreJugador(nombreJ1, nombreJ2);
+        int codigoError = validacion.validarNombreJugador(nombreJ1, nombreJ2);
 
         switch (codigoError){
 
@@ -148,28 +214,39 @@ public class Configuracion_Activity extends AppCompatActivity {
         return mensaje;
     }
 
+    /**
+     * Este método asigna un color al jugador. Para ello, el método recibe un id del jugador. El jugador 1 tendrá el id 1 y el jugador 2 tendrá el id 2. Dependiendo del RadioButton que haya
+     * @param idJugador Variable de tipo int que hace referencia al id del jugador.
+     * @return
+     */
     public String obtener_color(int idJugador){
 
-        String res;
+        String color;
 
         if (idJugador == 1){
+
             if(rbNaranjaJugador1.isChecked()){
-                res = COLOR_NARANJA;
-            }else if(rbVerdeJugador1.isChecked()){
-                res = COLOR_VERDE;
-            }else{
-                res = COLOR_AZUL;
+                color = COLOR_NARANJA;
             }
-        }else{
-            if(rbNaranjaJugador2.isChecked()){
-                res = COLOR_NARANJA;
-            }else if(rbVerdeJugador2.isChecked()){
-                res = COLOR_VERDE;
-            }else{
-                res = COLOR_AZUL;
+            else if(rbVerdeJugador1.isChecked()){
+                color = COLOR_VERDE;
+            }
+            else{
+                color = COLOR_AZUL;
             }
         }
-        return res;
+        else{
+            if(rbNaranjaJugador2.isChecked()){
+                color = COLOR_NARANJA;
+            }
+            else if(rbVerdeJugador2.isChecked()){
+                color = COLOR_VERDE;
+            }
+            else{
+                color = COLOR_AZUL;
+            }
+        }
+        return color;
     }
 
     public void on_radiobutton_pulsado(View v){

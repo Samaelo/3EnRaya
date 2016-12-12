@@ -47,30 +47,33 @@ public class Adaptador extends ArrayAdapter<String> {
         View item = convertView;
 
         //Esto nos permitirá comprobar si ya se ha creado un ítem en esa posición
-        // para no tener que volver a crear otra.
         if (item == null) {
             // Instanciamos la Vista que será el producto de inflar el ítem del ListView
             vista = LayoutInflater.from(getContext()).inflate(android.R.layout.simple_list_item_1, parent, false);
 
             view_holder = new ViewHolder(); // Instanciamos el objeto ViewHolder
-            view_holder.setTxt((TextView) vista.findViewById(android.R.id.text1)); //
-            vista.setTag(view_holder);
+            view_holder.setTxt((TextView) vista.findViewById(android.R.id.text1)); // Aplicamos al ViewHolder el texto del ítem del ListView
+            vista.setTag(view_holder); // Guardamos el tag de ese ítem
         }
         else{
-            //Si ya se ha creado este item, recogemos la referencia guardada para no inflar/crear
-            // uno nuevo.
-            vista = item;
-            view_holder = (ViewHolder) vista.getTag();
+            vista = item;// Si ya se ha creado este item, recogemos la referencia guardada para no inflar/crear uno nuevo.
+            view_holder = (ViewHolder) vista.getTag(); // Asginamos el valor del tag de ese ítem al ViewHolder
         }
         view_holder.txt.setText(partida_ganada);
-
 
         return vista;
     }
 
+    /**
+     * Clase ViewHolder implícita en la clase Adaptador que contiene una variable de tipo TextView y permite asignar un valor al texto del TextView
+     */
     class ViewHolder{
         private TextView txt;
 
+        /**
+         * Este método asigna el texto del ítem del ListView
+         * @param txt Objeto de tipo TextView que hace referencia al contenido del ítem del ListView
+         */
         public void setTxt(TextView txt) {
             this.txt = txt;
         }
