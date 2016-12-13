@@ -1,15 +1,17 @@
-package com.garcia.mario.tresenraya;
+package com.islasf.MarioSamael.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
+
+import com.garcia.mario.Activities.R;
 
 import java.util.ArrayList;
 
 import model.AccesoFicheros;
+import model.Adaptador;
 
 /**
  * Esta clase pertenece a la Activity donde se muestra la lista de las partidas jugadas y los ganadores de las mismas.

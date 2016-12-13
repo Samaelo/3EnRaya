@@ -1,4 +1,4 @@
-package com.garcia.mario.tresenraya;
+package model;
 
 /**
  * Esta clase valida los datos de los jugadores

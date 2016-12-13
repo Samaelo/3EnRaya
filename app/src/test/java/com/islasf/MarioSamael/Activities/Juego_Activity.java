@@ -1,4 +1,4 @@
-package com.garcia.mario.tresenraya;
+package com.islasf.MarioSamael.Activities;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.garcia.mario.Activities.R;
 
 import model.AccesoFicheros;
 import model.Boton;

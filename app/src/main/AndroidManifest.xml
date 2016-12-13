@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.garcia.mario.tresenraya">
+    package="com.garcia.mario.Activities">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
@@ -13,16 +13,16 @@
         android:theme="@style/AppTheme">
 
         <!-- android:theme="@style/Theme.AppCompat.Light.NoActionBar"> -->
-        <activity android:name=".MenuPrincipal_Activity">
+        <activity android:name="com.garcia.mario.com.islasf.MarioSamael.MenuPrincipal_Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Juego_Activity" />
-        <activity android:name=".CuadroHonor_Activity" />
-        <activity android:name=".Configuracion_Activity" />
+        <activity android:name="com.garcia.mario.com.islasf.MarioSamael.Juego_Activity" />
+        <activity android:name="com.garcia.mario.com.islasf.MarioSamael.CuadroHonor_Activity" />
+        <activity android:name="com.garcia.mario.com.islasf.MarioSamael.Configuracion_Activity" />
     </application>
 
 </manifest>

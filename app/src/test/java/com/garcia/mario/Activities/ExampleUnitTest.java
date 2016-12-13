@@ -1,4 +1,4 @@
-package com.garcia.mario.tresenraya;
+package com.garcia.mario.Activities;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.garcia.mario.tresenraya;
+package model;
 
 import android.content.Context;
 import android.view.LayoutInflater;

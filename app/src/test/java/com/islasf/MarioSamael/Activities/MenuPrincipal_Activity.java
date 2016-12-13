@@ -1,13 +1,11 @@
-package com.garcia.mario.tresenraya;
+package com.islasf.MarioSamael.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 
-import model.AccesoFicheros;
+import com.garcia.mario.Activities.R;
 
 /**
  * Esta clase hace referencia al menú principal. En esta Actividad, se podrá acceder a jugar una partida o a ver la lista de ganadores.

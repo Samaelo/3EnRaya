@@ -1,19 +1,20 @@
-package com.garcia.mario.tresenraya;
+package com.islasf.MarioSamael.Activities;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
+
+import com.garcia.mario.Activities.R;
+
 import java.util.ArrayList;
 
-import model.AccesoFicheros;
 import model.Jugador;
 import model.Partida;
+import model.Validacion;
 
 /**
  * Esta clase hace referencia a la pantalla de configuración, en la que los jugadores van a establecer sus nombres y los colores con los cuales desea jugar cada uno,
