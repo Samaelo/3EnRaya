@@ -8,45 +8,26 @@ import android.util.AttributeSet;
 import android.widget.Button;
 
 /**
- * Created by Mario on 06/12/2016.
+ * Esta clase hace referencia a un Boton
  */
+public class Boton {
 
+    private int id; // Variable de tipo int que hace referencia al id del botón
 
-/********************************
-
-
-
-
-
- *********************************/
-public class Boton extends Button {
-
-    private int id;
-    private boolean pulsado;
-
-    public Boton(Context c,int id){
-        super(c);
+    /**
+     * Constructor de la clase Botón
+     * @param id Hace referencia a la id del botón
+     */
+    public Boton(int id){
         this.id = id;
     }
 
+    /**
+     * Este método realiza un getter sobre el id del botón
+     * @return Retorna la id del botón
+     */
     public int getID(){
         return this.id;
     }
-
-    public boolean estaPulsado(){
-        return pulsado;
-    }
-
-    /**
-     * Método que establece el atributo pulsado a true, para no comparar con el contenido en "".
-     *
-     */
-    public void pulsar(){
-        pulsado = true;
-    }
-
-
-
-
 
 }

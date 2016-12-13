@@ -21,4 +21,5 @@
     <string name="textoExterno">External Storage(SD Card)</string>
     <string name="guardarPreferencias">Save Preferences</string>
     <string name="nombreFichero">Name of file to save</string>
+    <string name="jugar">Play</string>
 </resources>

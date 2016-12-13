@@ -21,4 +21,6 @@
     <string name="textoExterno">Externe Speicher</string>
     <string name="textoIdiomas">Sprache</string>
     <string name="guardarPreferencias">Einstellungen speichern</string>
+    <string name="jugar">Spielen</string>
+    <string name="nombreFichero">Nombre del fichero a guardar</string>
 </resources>

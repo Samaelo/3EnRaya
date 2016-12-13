@@ -34,7 +34,7 @@ public class Adaptador extends ArrayAdapter<String> {
      * @param posicion Variable de tipo entero que hace referencia a la posición de la línea del ListView a inflar
      * @param convertView Objeto de tipo View que hace referencia a la vista de la cual partimos para reutilizarla e inflar el siguiente ítem (fila del ListView)
      * @param parent Objeto de tipo ViewGroup que hace referencia a la vista a la cual tiene que adaptarse la nueva vista, es decir, en este caso la vista de cada ítem del ListView
-     * @return
+     * @return Se retorna un objeto de tipo View que hace referencia al item que ha sido inflado
      */
     @Override
     public View getView(int posicion, View convertView, ViewGroup parent) {
@@ -78,5 +78,4 @@ public class Adaptador extends ArrayAdapter<String> {
             this.txt = txt;
         }
     }
-
 }

@@ -21,4 +21,6 @@
     <string name="textoIdiomas">Lugha</string>
     <string name="textoInterno">Hifadhi ya ndani</string>
     <string name="guardarPreferencias">Hifadhi mapendeleo</string>
+    <string name="jugar">Kucheza</string>
+    <string name="nombreFichero">Jina faili kuokoa</string>
 </resources>

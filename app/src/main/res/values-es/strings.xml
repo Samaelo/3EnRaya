@@ -21,4 +21,6 @@
     <string name="textoIdiomas">Lenguaje</string>
     <string name="textoInterno">Almacenamiento Interno</string>
     <string name="guardarPreferencias">Guardar Preferencias</string>
+    <string name="jugar">Jugar</string>
+    <string name="nombreFichero">" Dateinamen zu speichern"</string>
 </resources>

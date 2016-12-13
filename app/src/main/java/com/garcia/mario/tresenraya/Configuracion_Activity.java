@@ -38,9 +38,7 @@ public class Configuracion_Activity extends AppCompatActivity {
     String jugador2; // String donde recogemos el nombre del jugador 2
 
     /**
-     * Este mguardar el estado de la Activity antes de ser destruida con el super.onSaveInstanceState(outState) y luego le agregamos con el método putInt() para guardar la información que
-     * queremos, en este caso queremos guardar lo que valía la variable cont que estamos usando para el TextView. Este método pide como argumento una clave, la cual he llamado “CONT”, y el valor,
-     * que en este caso es cont.
+     * Este método crea la Actividad.
      *
      * @param savedInstanceState Objeto de tipo Bundle donde guardamos el estado de nuestras variables su estado
      */
@@ -49,41 +47,6 @@ public class Configuracion_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_configuracion);
         cargar_componentes();
-    }
-
-    /**
-     * Este método guarda el estado de la Activity, es decir, el valor de las variables que contenía la actividad antes de girar la pantalla. Se realiza con el método super.onSaveInstanceState(outState)
-     * antes de que la Activity sea destruida y se guarda el valor de las variables con el método putString() para guardar la información que queremos. En este caso queremos guardar lo que valían
-     * las variables jugador1 y jugador2 que estamos usando en cada uno de los EditText que hacen referencia a los nombres de cada jugador.
-     * Este método con el cual guardamos el valor de las variables (putString()) pide como argumento una clave, que es de tipo String, el cual hace referencia al identificador de la variable
-     * que vamos a guardar y el valor de dicha clave, que será el nombre de la variable que queremos guardar.
-     *
-     * @param outState Variable de tipo Bundle que contiene el valor de todas las variables de la Activity
-     */
-    @Override
-    protected void onSaveInstanceState(Bundle outState){
-        jugador1 = eTxtJugador1.getText().toString();
-        jugador2 = eTxtJugador2.getText().toString();
-        super.onSaveInstanceState(outState);
-        outState.putString("nombreJ1", jugador1);
-        outState.putString("nombreJ2", jugador2);
-    }
-
-    /**
-     * Este método recoge el estado de la Activity anterior de la cual queremos obtener el valor de las variables que hemos guardado. Se realiza con el método super.onRestoreInstanceState(saveInstanceState)
-     * a través del cual se restauran los datos de la Activity anterior. El método con el cual recogemos los datos de las variables es getString(), que recibe por parámetro un String que hace referencia
-     * al valor de la clave que hemos ajuntado a la variable en el método putString cuando guardamos los datos en el método onSaveInstanceState().
-     * @param savedInstanceState Variable de tipo Bundle que contiene el valor de todas las variables de la Activity
-     */
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState){
-        jugador1 = eTxtJugador1.getText().toString();
-        jugador2 = eTxtJugador2.getText().toString();
-        super.onRestoreInstanceState(savedInstanceState);
-        jugador1 = savedInstanceState.getString("nombreJ1");
-        jugador2 = savedInstanceState.getString("nombreJ2");
-        eTxtJugador1.setText(String.valueOf(jugador1));
-        eTxtJugador2.setText(String.valueOf(jugador2));
     }
 
     /**
@@ -96,6 +59,7 @@ public class Configuracion_Activity extends AppCompatActivity {
      * 'eTxtJugador2' y un color que hace referencia al elemento RadioButton que haya elegido al igual que sucedía con el jugador 1.
      * Una vez creados los dos jugadores, los añadimos al ArrayList que hemos creado denominado 'jugadores'. Instanciamos una partida a la cual pasamos dicho ArrayList y mediante un Intent
      * llamamos a la actividad 'Juego_Activity', en la cual pasamos la partida.
+     *
      * @param v Objeto de la clase View que hace referencia a la vista donde se produce la llamada al método
      */
     public void on_btnJugar_pulsado(View v){
@@ -215,9 +179,10 @@ public class Configuracion_Activity extends AppCompatActivity {
     }
 
     /**
-     * Este método asigna un color al jugador. Para ello, el método recibe un id del jugador. El jugador 1 tendrá el id 1 y el jugador 2 tendrá el id 2. Dependiendo del RadioButton que haya
+     * Este método asigna un color al jugador. Para ello, el método recibe un id del jugador. El jugador 1 tendrá el id 1 y el jugador 2 tendrá el id 2. Dependiendo del RadioButton que haya pulsado cada
+     * jugador, obtendrá un color u otro.
      * @param idJugador Variable de tipo int que hace referencia al id del jugador.
-     * @return
+     * @return Retorna un String denominado 'color' que recoge el valor de la constante definida a nivel de clase que hace refencia
      */
     public String obtener_color(int idJugador){
 
@@ -249,52 +214,61 @@ public class Configuracion_Activity extends AppCompatActivity {
         return color;
     }
 
+    /**
+     * Este método invoca al método bloquear_radiobutton y recibe por parámetro la Vista del método que lo invoca(el método invocador es on_radiobutton_pulsado)
+     * @param v Objeto de la clase View que hace referencia a la vista donde se produce la llamada al método
+     */
     public void on_radiobutton_pulsado(View v){
+
         bloquear_radiobutton(v);
     }
 
+    /**
+     * Este método recibe por parámetro la vista del método que lo invoca. Mediante un switch, y cogiendo la id de cada botón, se establece que cuando un botón de un jugador se pulsa(mientras no esté
+     * pulsado en el otro jugador), se bloquee dicho botón en el RadioButton del otro jugador. De este modo se pierde la posibilidad de que los dos jugadores jueguen con el mismo color.
+     * @param v Objeto de la clase View que hace referencia a la vista donde se produce la llamada al método
+     */
     public void bloquear_radiobutton(View v){
+
         RadioButton rb = (RadioButton) v;
+
         switch(rb.getId()){
+
             case id_rbNaranjaJugador1:
                 activar_radiobuttons_jugador2();
                 rbNaranjaJugador2.setEnabled(false);
-                rbNaranjaJugador2.setTextColor(Color.GRAY);
-                rbNaranjaJugador1.setTextColor(Color.parseColor(COLOR_NARANJA));
                 break;
+
             case id_rbNaranjaJugador2:
                 activar_radiobuttons_jugador1();
                 rbNaranjaJugador1.setEnabled(false);
-                rbNaranjaJugador1.setTextColor(Color.GRAY);
-                rbNaranjaJugador2.setTextColor(Color.parseColor(COLOR_NARANJA));
                 break;
+
             case id_rbVerdeJugador1:
                 activar_radiobuttons_jugador2();
                 rbVerdeJugador2.setEnabled(false);
-                rbVerdeJugador2.setTextColor(Color.GRAY);
-                rbNaranjaJugador1.setTextColor(Color.parseColor(COLOR_VERDE));
                 break;
+
             case id_rbVerdeJugador2:
                 activar_radiobuttons_jugador1();
                 rbVerdeJugador1.setEnabled(false);
-                rbVerdeJugador1.setTextColor(Color.GRAY);
-                rbNaranjaJugador2.setTextColor(Color.parseColor(COLOR_VERDE));
                 break;
             case id_rbAzulJugador1:
                 activar_radiobuttons_jugador2();
                 rbAzulJugador2.setEnabled(false);
-                rbAzulJugador2.setTextColor(Color.GRAY);
-                rbNaranjaJugador1.setTextColor(Color.parseColor(COLOR_AZUL));
                 break;
+
             case id_rbAzulJugador2:
                 activar_radiobuttons_jugador1();
                 rbAzulJugador1.setEnabled(false);
-                rbAzulJugador1.setTextColor(Color.GRAY);
-                rbNaranjaJugador2.setTextColor(Color.parseColor(COLOR_AZUL));
                 break;
         }
     }
 
+    /**
+     * Este método carga los componentes de la aplicación. Carga 6 RadioButton que hace referencia a los 3 RadioButton de los colores de cada jugador, y 2 EditText, que hacen referencia a los elementos
+     * en los cuales los jugadores van a introducir sus nombres.
+     */
     public void cargar_componentes(){
         rbNaranjaJugador1 = (RadioButton) findViewById(id_rbNaranjaJugador1);
         rbNaranjaJugador2 = (RadioButton) findViewById(id_rbNaranjaJugador2);
@@ -309,18 +283,28 @@ public class Configuracion_Activity extends AppCompatActivity {
 
     }
 
+    /**
+     * Este método habilita los RadioButtons del jugador 1 cuando lo pulsa, en caso de que dicho RadioButton esté deshabilitado.
+     */
     public void activar_radiobuttons_jugador1(){
         if(!rbNaranjaJugador1.isEnabled()) rbNaranjaJugador1.setEnabled(true);
         if(!rbVerdeJugador1.isEnabled()) rbVerdeJugador1.setEnabled(true);
         if(!rbAzulJugador1.isEnabled()) rbAzulJugador1.setEnabled(true);
     }
 
+    /**
+     * Este método habilita los RadioButtons del jugador 2 cuando lo pulsa, en caso de que dicho RadioButton esté deshabilitado.
+     */
     public void activar_radiobuttons_jugador2(){
         if(!rbNaranjaJugador2.isEnabled()) rbNaranjaJugador2.setEnabled(true);
         if(!rbVerdeJugador2.isEnabled()) rbVerdeJugador2.setEnabled(true);
         if(!rbAzulJugador2.isEnabled()) rbAzulJugador2.setEnabled(true);
     }
 
+    /**
+     * Este método vuelve a la Activity del menú principal (MenuPrincipal_Activity)
+     * @param v Objeto de la clase View que hace referencia a la vista donde se produce la llamada al método
+     */
     public void volver(View v){
         finish();
         Intent intent = new Intent(this, MenuPrincipal_Activity.class);

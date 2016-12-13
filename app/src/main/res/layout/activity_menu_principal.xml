@@ -11,36 +11,25 @@
     tools:context="com.garcia.mario.tresenraya.MenuPrincipal_Activity">
 
     <Button
-        android:text="ListaGanadores"
+        android:text="@string/listaGanadores"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="33dp"
+        android:layout_marginBottom="63dp"
         android:id="@+id/btn_ListarGanadores"
         android:onClick="mostrarGanadores"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
     <Button
-        android:text="Preferencias"
+        android:text="@string/jugar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:id="@+id/btn_Preferencias"
-        android:onClick="irAPreferencias"
+        android:layout_marginBottom="29dp"
+        android:id="@+id/btn_Jugar"
+        android:onClick="jugar"
         android:layout_above="@+id/btn_ListarGanadores"
         android:layout_alignStart="@+id/btn_ListarGanadores"
         android:layout_alignEnd="@+id/btn_ListarGanadores" />
-
-    <Button
-        android:text="JUgar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="17dp"
-        android:id="@+id/btn_Jugar"
-        android:onClick="jugar"
-        android:layout_above="@+id/btn_Preferencias"
-        android:layout_alignStart="@+id/btn_Preferencias"
-        android:layout_alignEnd="@+id/btn_Preferencias" />
 
 </RelativeLayout>
 

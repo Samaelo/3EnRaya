@@ -22,14 +22,23 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-
+/**
+ * Esta clase permite el acceso a los ficheros
+ */
 public class AccesoFicheros {
 
+    // Constante de tipo String que hace referencia al nombre del fichero donde se guardan los datos de las partidas y los ganadores que han ganado dicha partida
     final private static String FICHERO_CUADRO_HONOR = "cuadrohonor.txt";
 
-    Context contexto;
-    Partida partida;
+    Context contexto; // Contexto de la Actividad
+    Partida partida; // Objeto Partida
 
+    /**
+     * Constructor de la clase AccesoFicheros que recibe por parámetros el Contexto de la actividad y una Partida
+     *
+     * @param contexto Contexto de la Actividad
+     * @param partida Objeto Partida
+     */
     public AccesoFicheros(Context contexto, Partida partida){
         this.contexto = contexto;
         this.partida = partida;
@@ -54,7 +63,7 @@ public class AccesoFicheros {
         String resultadoPartida = String.format(contexto.getResources().getString(R.string.partidaGuardada), jugador1, jugador2, ganador);
 
         try {
-            File fichero = new File(FICHERO_CUADRO_HONOR);
+            File fichero = new File(FICHERO_CUADRO_HONOR); // Creamos un fichero con el nombre de la constante
             fos = contexto.openFileOutput(fichero.getName(), contexto.MODE_APPEND | contexto.MODE_PRIVATE);
             osw = new OutputStreamWriter(fos);
 
@@ -77,6 +86,18 @@ public class AccesoFicheros {
         }
     }
 
+    /**
+     * Este método accede al fichero definido en la constante FICHERO_CUADRO_HONOR. Como el almacenamiento de los datos en la partida y el ganador, está separado por una coma (','), necesitamos
+     * obtener los valores tanto de la partida como del ganador. Para ello, utilizamos el método StringTokenizer, especificando que el separador es la coma (','). En primer lugar, el primer String
+     * que obtenemos con el método nextToken(), hace referencia al String de la partida(Jugador1 vs Jugador2), que lo almacenamos en el String definido como 'versus', y el segundo String que obtenemos
+     * volviendo a usar el método nextToken(), lo volcamos en la variable 'ganador' y en ella recogemos el nombre del ganador.
+     *
+     * Una vez que tenemos los dos datos de interés que queremos recoger(partida y ganador), volcamos los datos en un String que hemos definido como 'resultado_partida', que posteriormente añadimos
+     * al ArrayList de String denominado 'partidas_ganadas', para finalmente devolver dicho ArrayList.
+     * El objetivo de este método, es devolver el contenido del fichero en forma de ArrayList de tipo String, para poder darle forma con un Adaptador.
+     *
+     * @return Retorna un ArrayList que contiene las partidas almacenadas en el fichero
+     */
     public ArrayList<String> leerDatosDeFichero() {
 
         ArrayList<String> partidas_ganadas = new ArrayList<String>();
@@ -122,51 +143,5 @@ public class AccesoFicheros {
             }
         }
         return partidas_ganadas;
-    }
-
-    // -- COMPROBAMOS EL ESTADO DE LA TARJETA SD -- //
-
-    public boolean comprobarTarjetaSD(){
-
-        //Comprobamos el estado de la memoria externa (tarjeta SD)
-        String estado = Environment.getExternalStorageState();
-
-        if (estado.equals(Environment.MEDIA_MOUNTED)){
-            return true;
-        }
-        return false;
-    }
-
-    // -- PETICIÓN DE PERSMISOS -- //
-
-    /**
-     * Constante de tipo entero que es utilizada para verificar los permisos sobre la memoria externa.
-     */
-    private static final int REQUEST_EXTERNAL_STORAGE = 1;
-
-    /**
-     * Array de constantes de tipo String que ayudan a conocer si los permisos garantizados son los deseados. Dentro del Array pedimos los permisos de lectura y escritura del fichero.
-     */
-    private static String[] PERMISSIONS_STORAGE = {
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
-    };
-
-    /**
-     * Verifica que los permisos de escritura en la memoria externa están garantizados.
-     * @param activity - La actividad que desea verificar los
-     */
-    public void verificarPermisosDeAlmacenamientoExterno(Activity activity) {
-
-        int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-
-        if (permission != PackageManager.PERMISSION_GRANTED) {
-
-            ActivityCompat.requestPermissions(
-                    activity,
-                    PERMISSIONS_STORAGE,
-                    REQUEST_EXTERNAL_STORAGE
-            );
-        }
     }
 }
